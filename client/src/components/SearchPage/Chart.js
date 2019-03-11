@@ -26,7 +26,7 @@ export class Chart extends Component {
 
         var chart = new CanvasJS.Chart("chartColumnContainer", {
             title:{
-                text: "Popularity"              
+                text: "Column chart"              
             },
             data: [              
             {
@@ -49,7 +49,7 @@ export class Chart extends Component {
 
         var chart = new CanvasJS.Chart("chartSplineContainer", {
             title:{
-                text: "Popularity"              
+                text: "Spline chart"              
             },
             data: [              
             {
