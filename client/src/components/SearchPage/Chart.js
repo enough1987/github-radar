@@ -16,8 +16,7 @@ export class Chart extends Component {
       done: false
     };
 
-    chartRender = () => {
-        console.log( this.props.userList );
+    renderColumnChart = () => {
         const dataPoints = this.props.userList.map((item, index) => {
             return {
                 label: item.name,
@@ -25,7 +24,7 @@ export class Chart extends Component {
             }
         });
 
-        var chart = new CanvasJS.Chart("chartContainer", {
+        var chart = new CanvasJS.Chart("chartColumnContainer", {
             title:{
                 text: "Popularity"              
             },
@@ -40,17 +39,42 @@ export class Chart extends Component {
         chart.render();
     }
 
+    renderSplineChart = () => {
+        const dataPoints = this.props.userList.map((item, index) => {
+            return {
+                label: item.name,
+                y: ( index + 1) * 10
+            }
+        });
+
+        var chart = new CanvasJS.Chart("chartSplineContainer", {
+            title:{
+                text: "Popularity"              
+            },
+            data: [              
+            {
+                // Change type to "doughnut", "line", "splineArea", etc.
+                type: "spline",
+                dataPoints
+            }
+            ]
+        });
+        chart.render();
+    };
+
     handleGlobalSearch = value => {
       this.props.searchUsers(value)
         .then(() => this.setState({ done: true }));
     }
 
     componentDidMount() {
-        this.chartRender();
+        this.renderColumnChart();
+        this.renderSplineChart();
     }
 
     componentDidUpdate() {
-        this.chartRender();
+        this.renderColumnChart();
+        this.renderSplineChart();
     }
 
     render () {
@@ -64,7 +88,10 @@ export class Chart extends Component {
                   </div>
               </div>
               <div className="row" style={ { paddingTop: 10 } }>
-                <div id="chartContainer" 
+                <div id="chartColumnContainer" 
+                    style={ { height: '300px', width: '100%' } }>
+                </div>
+                <div id="chartSplineContainer" 
                     style={ { height: '300px', width: '100%' } }>
                 </div>
               </div>
