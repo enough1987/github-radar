@@ -2,7 +2,9 @@ import React from 'react';
 
 const Header = () => (
     <React.Fragment>
-        <h1>GitHub Radar POC</h1>
+        <div className="header">
+            <h1>GitHub Radar POC</h1>
+        </div>
     </React.Fragment>
 );
 
