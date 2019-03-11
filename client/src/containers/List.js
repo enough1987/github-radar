@@ -55,6 +55,11 @@ export const Header = ({ sort, onSearch }) => (
                 <SortDesc sort={ sort } name="url"/>
                 <FieldSearch onSearch={ onSearch } name="url"/>
             </th>
+            <th><label>Language</label>
+                <SortAsc sort={ sort } name="language"/>
+                <SortDesc sort={ sort } name="language"/>
+                <FieldSearch onSearch={ onSearch } name="language"/>
+            </th>
             <th><label>Description</label>
                 <SortAsc sort={ sort } name="desc"/>
                 <SortDesc sort={ sort } name="desc"/>
@@ -87,12 +92,13 @@ export const Header = ({ sort, onSearch }) => (
 );
 
 export const Detail = ({ idx, item, onEdit, onDelete }) => {
-  const { created, updated, name, forks, stars, size, url, desc } = item;
+  const { created, updated, name, forks, stars, size, url, desc, language } = item;
   return (
       <tr>
           <td>{idx + 1}</td>
           <td>{name}</td>
           <td>{url}</td>
+          <td>{language}</td>
           <td>{desc}</td>
           <td>{stars}</td>
           <td>{forks}</td>
