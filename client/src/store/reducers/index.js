@@ -24,6 +24,7 @@ const userListReducer = (state = [], action) => {
             'stars': item['stargazers_count'],
             'size': item['size'],
             'url': item['html_url'],
+            'language': item['language'],
             'desc': item['description'],
             'created': item['created_at'],
             'updated': item['updated_at']
