@@ -6,9 +6,23 @@ import PropTypes from 'prop-types';
 import * as ListAction from '../../store/actions';
 import Searchbox from '../Search';
 import SearchPageNavigator from './SearchPageNavigator';
+import { sortArrayByfield } from '../../utils';
 
 let CanvasJS = require('../../assets/canvasjs.min');
 CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
+
+const fakeList = {
+    'Mon Mar 01 2019 00:00:01 GMT+0800 (China Standard Time)' : [
+
+
+    ],
+    'Mon Mar 02 2019 00:00:01 GMT+0800 (China Standard Time)' : [
+        
+    ],
+    'Mon Mar 03 2019 00:00:01 GMT+0800 (China Standard Time)' : [
+        
+    ]
+}
 
 
 export class Chart extends Component {
@@ -17,10 +31,15 @@ export class Chart extends Component {
     };
 
     renderColumnChart = () => {
-        const dataPoints = this.props.userList.map((item, index) => {
+        console.log(this.props.userList);
+
+        const sortedList = this.props.userList.sort(sortArrayByfield('stars'));
+
+        const dataPoints = sortedList.map((item, index) => {
+
             return {
                 label: item.name,
-                y: ( index + 1) * 10
+                y: item.stars
             }
         });
 
@@ -32,6 +51,8 @@ export class Chart extends Component {
             {
                 // Change type to "doughnut", "line", "splineArea", etc.
                 type: "column",
+                bevelEnabled: true,
+                indexLabelPlacement: 'inside',
                 dataPoints
             }
             ]
@@ -40,6 +61,11 @@ export class Chart extends Component {
     }
 
     renderSplineChart = () => {
+        const _dataPoints = [];
+        for ( const date in fakeList) {
+            console.log(date)
+        }
+
         const dataPoints = this.props.userList.map((item, index) => {
             return {
                 label: item.name,
@@ -59,7 +85,7 @@ export class Chart extends Component {
             }
             ]
         });
-        chart.render();
+        //chart.render();
     };
 
     handleGlobalSearch = value => {
