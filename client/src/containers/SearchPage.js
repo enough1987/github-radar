@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 
 import Searchbox from '../components/Search';
 import SearchPageNavigator from '../components/SearchPage/SearchPageNavigator';
@@ -13,6 +13,10 @@ export const SortAsc = ({ sort, name }) => (
         <i className="fa fa-sort-up fa-lg"></i>
     </button>
 );
+SortAsc.propTypes = {
+  name: PropTypes.string.isRequired,
+  sort: PropTypes.func.isRequired
+};
 
 export const SortDesc = ({ sort, name }) => (
     <button
@@ -23,6 +27,10 @@ export const SortDesc = ({ sort, name }) => (
         <i className="fa fa-sort-down fa-lg"></i>
     </button>
 );
+SortDesc.propTypes = {
+  name: PropTypes.string.isRequired,
+  sort: PropTypes.func.isRequired
+};
 
 export let FieldSearch = ({ name, onSearch }) => (
     <div className="input-group">
@@ -36,9 +44,10 @@ export let FieldSearch = ({ name, onSearch }) => (
         />
     </div>
 );
-FieldSearch = connect(
-  state => ({ userList: state.userList })
-)(FieldSearch);
+FieldSearch.propTypes = {
+  name: PropTypes.string.isRequired,
+  onSearch: PropTypes.func.isRequired
+};
 
 export const Header = ({ sort, onSearch }) => (
     <thead>
@@ -89,6 +98,10 @@ export const Header = ({ sort, onSearch }) => (
         </tr>
     </thead>
 );
+Header.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+  sort: PropTypes.func.isRequired
+};
 
 export const Detail = ({ idx, item, onEdit, onDelete }) => {
   const { created, updated, name, forks, stars, size, url, desc, language } = item;
@@ -107,6 +120,14 @@ export const Detail = ({ idx, item, onEdit, onDelete }) => {
       </tr>
   );
 };
+Detail.propTypes = {
+  idx: PropTypes.number.isRequired,
+  item: PropTypes.arrayOf(
+    PropTypes.object
+  ).isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired
+};
 
 export class Chart extends Component {
   state = {
@@ -115,7 +136,9 @@ export class Chart extends Component {
 
   handleGlobalSearch = value => {
     this.props.searchUsers(value)
-      .then(() => this.setState({ done: true }));
+      .then(() => this.setState({ done: true }))
+      /* eslint-disable no-console */
+      .catch(console.error);
   }
 
   render () {
@@ -134,3 +157,6 @@ export class Chart extends Component {
     );
   }
 }
+Chart.propTypes = {
+  searchUsers: PropTypes.func.isRequired
+};
