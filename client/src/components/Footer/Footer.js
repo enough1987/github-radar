@@ -1,11 +1,13 @@
 import React from 'react';
+import './Footer.css';
 
 const Footer = () => (
-    <React.Fragment>
-        <p className="mt-5 mb-3 text-muted text-center">
-      &copy;William Jiang 2019
+    <div className="footer">
+        <p className="footer-copyright">
+      &copy; 2019 EPAM Systems, Inc. All Rights Reserved.
         </p>
-    </React.Fragment>
+    </div>
 );
 
 export default Footer;
+

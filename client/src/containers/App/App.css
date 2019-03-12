@@ -140,3 +140,7 @@
 .link-button:focus {
   text-decoration: none;
 }
+
+.container {
+  padding-top: 60px;
+}
