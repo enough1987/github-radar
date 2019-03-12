@@ -1,11 +1,5 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-
-import * as ListAction from '../store/actions';
-import { searchFields } from '../store/reducers';
-import Searchbox from '../components/Search';
-import SearchPageNavigator from '../components/SearchPage/SearchPageNavigator';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 
 export const SortAsc = ({ sort, name }) => (
     <button
@@ -16,6 +10,10 @@ export const SortAsc = ({ sort, name }) => (
         <i className="fa fa-sort-up fa-lg"></i>
     </button>
 );
+SortAsc.propTypes = {
+  name: PropTypes.string.isRequired,
+  sort: PropTypes.func.isRequired
+};
 
 export const SortDesc = ({ sort, name }) => (
     <button
@@ -26,6 +24,10 @@ export const SortDesc = ({ sort, name }) => (
         <i className="fa fa-sort-down fa-lg"></i>
     </button>
 );
+SortDesc.propTypes = {
+  name: PropTypes.string.isRequired,
+  sort: PropTypes.func.isRequired
+};
 
 export let FieldSearch = ({ name, onSearch }) => (
     <div className="input-group">
@@ -39,9 +41,10 @@ export let FieldSearch = ({ name, onSearch }) => (
         />
     </div>
 );
-FieldSearch = connect(
-  state => ({ userList: state.userList })
-)(FieldSearch);
+FieldSearch.propTypes = {
+  name: PropTypes.string.isRequired,
+  onSearch: PropTypes.func.isRequired
+};
 
 export const Header = ({ sort, onSearch }) => (
     <thead>
@@ -92,6 +95,10 @@ export const Header = ({ sort, onSearch }) => (
         </tr>
     </thead>
 );
+Header.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+  sort: PropTypes.func.isRequired
+};
 
 export const Detail = ({ idx, item, onEdit, onDelete }) => {
   const { created, updated, name, forks, stars, size, url, desc, language } = item;
@@ -110,30 +117,9 @@ export const Detail = ({ idx, item, onEdit, onDelete }) => {
       </tr>
   );
 };
-
-export class Chart extends Component {
-  state = {
-    done: false
-  };
-
-  handleGlobalSearch = value => {
-    this.props.searchUsers(value)
-      .then(() => this.setState({ done: true }));
-  }
-
-  render () {
-    return (
-        <div className="container" style={ { paddingTop: 48 } }>
-            <div className="row">
-                <div className="col-md-10">
-                    <SearchPageNavigator />
-                    <Searchbox onChange={ this.handleGlobalSearch }/>
-                </div>
-            </div>
-            <div className="row" style={ { paddingTop: 10 } }>
-                CHART
-            </div>
-        </div>
-    );
-  }
-}
+Detail.propTypes = {
+  idx: PropTypes.number.isRequired,
+  item: PropTypes.object.isRequired,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func
+};

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loadReposAction, addReposAction, userChangedAction, loadingChangedAction } from '../actions';
+import PropTypes from 'prop-types';
 
 class Delegate extends Component {
   constructor (props) {
@@ -59,7 +60,9 @@ class Delegate extends Component {
                 <form onSubmit={ (e) => this.handleSubmit(e) } className="form form-inline row" style={ { marginBottom: 15 } }>
                     <div className="form-group">
                         <input type="text" placeholder="Enter github username" className="form-control"
-                          ref={ (input) => this.input = input }/>
+                          ref={ /* eslint-disable no-return-assign */
+                            (input) => this.input = input
+                          }/>
                     </div>
                     <button className="btn btn-primary" type="submit">load</button>
             &nbsp;
@@ -77,6 +80,12 @@ class Delegate extends Component {
   }
 }
 
+Delegate.propTypes = {
+  github: PropTypes.object.isRequired,
+  userChangedAction: PropTypes.func.isRequired,
+  loadReposAction: PropTypes.func.isRequired
+};
+
 const mapStateToProps = (state) => ({
   github: state.github
 });
@@ -90,9 +99,7 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 };
 
-Delegate = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Delegate);
-
-export default Delegate;

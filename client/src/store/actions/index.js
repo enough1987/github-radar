@@ -1,4 +1,6 @@
 
+// TODO: do we need this?
+/* eslint-disable no-unused-vars */
 const _common = (url, actionType) => (page = 1) => dispatch => {
   return fetch(url + page)
     .then(res => res.json())
@@ -60,5 +62,8 @@ export const loadReposAction = user => dispatch => {
     .then(data => {
       dispatch(loadingChangedAction(false));
       dispatch(addReposAction(data));
-    });
+      return true;
+    })
+    /* eslint-disable no-console */
+    .catch(console.error);
 };

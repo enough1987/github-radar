@@ -1,47 +1,50 @@
+/* eslint react/no-array-index-key: 0 */ // --> OFF
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import * as ListAction from '../../store/actions';
-import { searchFields } from '../../store/reducers';
-import Searchbox from '../Search';
-import SearchPageNavigator from './SearchPageNavigator';
-import { Header } from '../../containers/SearchPage';
-import { Detail } from '../../containers/SearchPage';
+import * as ListAction from '../../../store/actions';
+import { searchFields } from '../../../store/reducers';
+import Searchbox from '../../Search/Search';
+import SearchPageNavigator from '../SearchPageNavigator';
+import { Header, Detail } from '../../../containers/SearchPage';
 
 export class List extends Component {
     state = {
-      total_page: 1,
-      total_users: 0,
-      search_value: '',
-      search_field: '',
+      totalPage: 1,
+      totalUsers: 0,
+      searchValue: '',
+      searchField: '',
       done: false
     };
 
     handleSearch = (e, field) => {
       let keyword = e.target.value;
       if (keyword) {
-        this.setState({ search_value: keyword.trim().toLowerCase(), search_field: field });
+        this.setState({ searchValue: keyword.trim().toLowerCase(), searchField: field });
       } else {
-        this.setState({ search_value: '', search_field: '' });
+        this.setState({ searchValue: '', searchField: '' });
       }
       e.preventDefault();
     }
 
     handleGlobalSearch = value => {
       this.props.searchUsers(value)
-        .then(() => this.setState({ done: true }));
+        .then(() => this.setState({ done: true }))
+        /* eslint-disable no-console */
+        .catch(console.error);
     }
 
     render () {
       const { userList, sortAction } = this.props;
-      const { search_value, search_field } = this.state;
-      let list = []; let total_idx = 0;
-      if (search_field && search_value) {
-        list = searchFields(userList, search_field, search_value) || [];
+      const { searchValue, searchField } = this.state;
+      let list = []; let totalIdx = 0;
+      if (searchField && searchValue) {
+        list = searchFields(userList, searchField, searchValue) || [];
       } else {
         list = userList || [];
-        total_idx = list.length;
+        totalIdx = list.length;
       }
 
       return (
@@ -58,7 +61,7 @@ export class List extends Component {
                       <tbody>
                           {Array.isArray(list) && list.map((item, i) => (
                               <Detail
-                                key={ i + total_idx }
+                                key={ i + totalIdx }
                                 item={ item }
                                 idx={ i }
                               />
@@ -70,6 +73,14 @@ export class List extends Component {
       );
     }
 }
+
+List.propTypes = {
+  userList: PropTypes.arrayOf(
+    PropTypes.object
+  ).isRequired,
+  sortAction: PropTypes.func.isRequired,
+  searchUsers: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state) => {
   return {
