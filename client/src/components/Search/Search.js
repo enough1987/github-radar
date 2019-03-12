@@ -2,7 +2,7 @@
 import React from 'react';
 import Languages from '../../languages';
 import PropTypes from 'prop-types';
-import SearchButton from './Common/SearchButton.js';
+import SearchButton from '../Common/SearchButton.js';
 
 class Searchbox extends React.Component {
   constructor (props) {
