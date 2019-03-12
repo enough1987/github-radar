@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import * as ListAction from '../../../store/actions';
-import { searchFields } from '../../../store/reducers';
+import * as ListAction from '../../../store/actions/searchPage';
+import { searchFields } from '../../../store/reducers/searchPage';
 import Header from '../Header/Header';
 import Detail from '../Detail/Detail';
 

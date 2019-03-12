@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import Searchbox from '../../components/Searchbox/Searchbox';
 import SearchPageNavigator from '../../components/SearchPage/SearchPageNavigator/SearchPageNavigator';
-import * as ListAction from '../../store/actions';
+import * as ListAction from '../../store/actions/searchPage';
 
 export class SearchPage extends Component {
   constructor (props) {
