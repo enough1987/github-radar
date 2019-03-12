@@ -1,6 +1,6 @@
 import React from 'react';
-import { Navigator } from '../components';
-import '../assets/css/components/header.css';
+import { Navigator } from '../../components';
+import '../../assets/css/components/header.css';
 
 const Header = () => (
     <React.Fragment>
