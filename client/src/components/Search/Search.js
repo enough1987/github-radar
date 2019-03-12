@@ -1,6 +1,6 @@
 /* eslint react/no-array-index-key: 0 */ // --> OFF
 import React from 'react';
-import Languages from '../languages';
+import Languages from '../../languages';
 import PropTypes from 'prop-types';
 
 class Searchbox extends React.Component {

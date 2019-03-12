@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import * as ListAction from '../../../store/actions';
-import Searchbox from '../../Search';
+import Searchbox from '../../Search/Search';
 import SearchPageNavigator from '../SearchPageNavigator';
 import { sortArrayByfield } from '../../../utils';
 

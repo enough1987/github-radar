@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import * as ListAction from '../../../store/actions';
 import { searchFields } from '../../../store/reducers';
-import Searchbox from '../../Search';
+import Searchbox from '../../Search/Search';
 import SearchPageNavigator from '../SearchPageNavigator';
 import { Header, Detail } from '../../../containers/SearchPage';
 
