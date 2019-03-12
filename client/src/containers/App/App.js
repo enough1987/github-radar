@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import Navigator from '../../components/Navigator/Navigator';
 import List from '../../components/SearchPage/List/List';
 import Chart from '../../components/SearchPage/Chart/Chart';
 import SearchPage from '../SearchPage/SearchPage';
@@ -30,10 +29,11 @@ class App extends Component {
   render () {
     return (
         <Router>
-            <div className="App container">
+            <div className="App">
                 <Header/>
-                <Navigator />
-                <UserLoginRouters/>
+                <div className="container">
+                    <UserLoginRouters/>
+                </div>
                 <Footer/>
             </div>
         </Router>
