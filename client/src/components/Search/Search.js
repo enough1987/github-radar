@@ -2,6 +2,7 @@
 import React from 'react';
 import Languages from '../../languages';
 import PropTypes from 'prop-types';
+import SearchButton from './Common/SearchButton.js';
 
 class Searchbox extends React.Component {
   constructor (props) {
@@ -26,13 +27,8 @@ class Searchbox extends React.Component {
               }
             />
             <div className="input-group-btn">
-                <button
-                  className="btn btn-warning"
-                  type="button"
-                  onClick={ this.handleClick }
-                >
-                    <i className="fa fa-search-plus"></i>
-                </button>
+                <SearchButton clickHandler={ this.handleClick }>
+                </SearchButton>
             </div>
 
             <select onChange={ this.handleSelectChange }>
