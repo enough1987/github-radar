@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 import * as ListAction from '../../store/actions';
 import Searchbox from '../Search';
 import SearchPageNavigator from './SearchPageNavigator';
+import { sortArrayByfield } from '../../utils';
 
 let CanvasJS = require('../../assets/canvasjs.min');
 CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
-
 
 export class Chart extends Component {
     state = {
@@ -17,68 +17,47 @@ export class Chart extends Component {
     };
 
     renderColumnChart = () => {
-        const dataPoints = this.props.userList.map((item, index) => {
-            return {
-                label: item.name,
-                y: ( index + 1) * 10
-            }
-        });
+      const sortedList = this.props.userList.sort(sortArrayByfield('stars'));
 
-        var chart = new CanvasJS.Chart("chartColumnContainer", {
-            title:{
-                text: "Column chart"              
-            },
-            data: [              
-            {
-                // Change type to "doughnut", "line", "splineArea", etc.
-                type: "column",
-                dataPoints
-            }
-            ]
-        });
-        chart.render();
+      const dataPoints = sortedList.map((item) => {
+        return {
+          label: item.name,
+          y: item.stars
+        };
+      });
+
+      var chart = new CanvasJS.Chart('chartColumnContainer', {
+        title: {
+          text: 'Column chart'
+        },
+        data: [
+          {
+            type: 'column',
+            bevelEnabled: true,
+            indexLabelPlacement: 'inside',
+            dataPoints
+          }
+        ]
+      });
+      chart.render();
     }
-
-    renderSplineChart = () => {
-        const dataPoints = this.props.userList.map((item, index) => {
-            return {
-                label: item.name,
-                y: ( index + 1) * 10
-            }
-        });
-
-        var chart = new CanvasJS.Chart("chartSplineContainer", {
-            title:{
-                text: "Spline chart"              
-            },
-            data: [              
-            {
-                // Change type to "doughnut", "line", "splineArea", etc.
-                type: "spline",
-                dataPoints
-            }
-            ]
-        });
-        chart.render();
-    };
 
     handleGlobalSearch = value => {
       this.props.searchUsers(value)
-        .then(() => this.setState({ done: true }));
+        .then(() => this.setState({ done: true }))
+        /* eslint-disable no-console */
+        .catch(console.error);
     }
 
-    componentDidMount() {
-        this.renderColumnChart();
-        this.renderSplineChart();
+    componentDidMount () {
+      this.renderColumnChart();
     }
 
-    componentDidUpdate() {
-        this.renderColumnChart();
-        this.renderSplineChart();
+    componentDidUpdate () {
+      this.renderColumnChart();
     }
 
     render () {
-
       return (
           <div className="container" style={ { paddingTop: 48 } }>
               <div className="row">
@@ -88,12 +67,9 @@ export class Chart extends Component {
                   </div>
               </div>
               <div className="row" style={ { paddingTop: 10 } }>
-                <div id="chartColumnContainer" 
+                  <div id="chartColumnContainer"
                     style={ { height: '300px', width: '100%' } }>
-                </div>
-                <div id="chartSplineContainer" 
-                    style={ { height: '300px', width: '100%' } }>
-                </div>
+                  </div>
               </div>
           </div>
       );
