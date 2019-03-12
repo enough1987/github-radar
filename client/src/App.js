@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { Header, Footer, Navigator } from './components';
+import { Header, Footer } from './components';
 import List from './components/SearchPage/List/List';
 import Chart from './components/SearchPage/Chart/Chart';
 import SearchPage from './containers/SearchPage/SearchPage';
@@ -26,10 +26,11 @@ class App extends Component {
   render () {
     return (
         <Router>
-            <div className="App container">
+            <div className="App">
                 <Header/>
-                <Navigator />
-                <UserLoginRouters/>
+                <div className="container">
+                    <UserLoginRouters/>
+                </div>
                 <Footer/>
             </div>
         </Router>
