@@ -6,9 +6,8 @@ import PropTypes from 'prop-types';
 
 import * as ListAction from '../../../store/actions';
 import { searchFields } from '../../../store/reducers';
-import Searchbox from '../../Search/Search';
-import SearchPageNavigator from '../SearchPageNavigator';
-import { Header, Detail } from '../../../containers/SearchPage';
+import Header from '../Header/Header';
+import Detail from '../Detail/Detail';
 
 export class List extends Component {
     state = {
@@ -29,13 +28,6 @@ export class List extends Component {
       e.preventDefault();
     }
 
-    handleGlobalSearch = value => {
-      this.props.searchUsers(value)
-        .then(() => this.setState({ done: true }))
-        /* eslint-disable no-console */
-        .catch(console.error);
-    }
-
     render () {
       const { userList, sortAction } = this.props;
       const { searchValue, searchField } = this.state;
@@ -48,27 +40,19 @@ export class List extends Component {
       }
 
       return (
-          <div className="container" style={ { paddingTop: 48 } }>
-              <div className="row">
-                  <div className="col-md-10">
-                      <SearchPageNavigator />
-                      <Searchbox onChange={ this.handleGlobalSearch }/>
-                  </div>
-              </div>
-              <div className="row" style={ { paddingTop: 10 } }>
-                  <table className="table table-bordered">
-                      <Header sort={ sortAction } onSearch={ this.handleSearch }/>
-                      <tbody>
-                          {Array.isArray(list) && list.map((item, i) => (
-                              <Detail
-                                key={ i + totalIdx }
-                                item={ item }
-                                idx={ i }
-                              />
-                          ))}
-                      </tbody>
-                  </table>
-              </div>
+          <div className="row" style={ { paddingTop: 10 } }>
+              <table className="table table-bordered">
+                  <Header sort={ sortAction } onSearch={ this.handleSearch }/>
+                  <tbody>
+                      {Array.isArray(list) && list.map((item, i) => (
+                          <Detail
+                            key={ i + totalIdx }
+                            item={ item }
+                            idx={ i }
+                          />
+                      ))}
+                  </tbody>
+              </table>
           </div>
       );
     }
@@ -78,8 +62,7 @@ List.propTypes = {
   userList: PropTypes.arrayOf(
     PropTypes.object
   ).isRequired,
-  sortAction: PropTypes.func.isRequired,
-  searchUsers: PropTypes.func.isRequired
+  sortAction: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
