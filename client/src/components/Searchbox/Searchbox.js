@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SearchButton from '../Common/SearchButton.js';
 
-import Languages from '../../languages';
+import Languages from '../../assets/languages';
 
 class Searchbox extends React.Component {
   constructor (props) {

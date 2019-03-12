@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { Header, Footer, Navigator } from './components';
-import List from './components/SearchPage/List/List';
-import Chart from './components/SearchPage/Chart/Chart';
-import SearchPage from './containers/SearchPage/SearchPage';
+
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import Navigator from '../../components/Navigator/Navigator';
+import List from '../../components/SearchPage/List/List';
+import Chart from '../../components/SearchPage/Chart/Chart';
+import SearchPage from '../SearchPage/SearchPage';
 import './App.css';
 
 const UserLoginRouters = () => (
     <Switch>
-        <Route path='/search/:id' component={ ({ match }) =>
+        <Route path='/search/:id' component={ () =>
             <SearchPage>
                 <Switch>
                     <Route path='/search/list' component={ List } />
                     <Route path='/search/chart' component={ Chart } />
+                    <Route render={ () => <Redirect to="/search/list"/> }/>
                 </Switch>
             </SearchPage>
         }/>
-        <Route path="/about" render={ (props) => <h1>About</h1> }/>
+        <Route path="/about" render={ () => <h1>About</h1> }/>
         <Route path="/contact" render={ () => <h1>Contact</h1> }/>
-        <Route render={ ({ match }) => <Redirect to="/search/list"/> }/>
+        <Route render={ () => <Redirect to="/search/list"/> }/>
     </Switch>
 );
 

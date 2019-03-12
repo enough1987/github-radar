@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Searchbox from '../../components/Searchbox/Searchbox';
-import SearchPageNavigator from '../../components/SearchPage/SearchPageNavigator';
+import SearchPageNavigator from '../../components/SearchPage/SearchPageNavigator/SearchPageNavigator';
 import * as ListAction from '../../store/actions';
 
 export class SearchPage extends Component {
