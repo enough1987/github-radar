@@ -1,0 +1,12 @@
+
+.github-search {
+    grid-area: submit;
+    font: 300 2.0rem "Source Sans Pro","Hiragino Sans GB","Microsoft JhengHei",arial,helvetica,sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #76cdd8;
+    border: 0;
+    margin: 0 10px;
+    padding: 0 10px;
+    max-height: 5rem;
+}
