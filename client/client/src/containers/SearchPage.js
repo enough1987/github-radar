@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import * as ListAction from '../store/actions';
+import { searchFields } from '../store/reducers';
 import Searchbox from '../components/Search';
 import SearchPageNavigator from '../components/SearchPage/SearchPageNavigator';
 

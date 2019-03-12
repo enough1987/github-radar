@@ -1,7 +1,5 @@
-/* eslint react/no-array-index-key: 0 */ // --> OFF
 import React from 'react';
 import Languages from '../languages';
-import PropTypes from 'prop-types';
 
 class Searchbox extends React.Component {
   constructor (props) {
@@ -21,9 +19,9 @@ class Searchbox extends React.Component {
               name="global_search"
               alt="search all data source"
               onChange={ this.handleChange }
-              ref={ /* eslint-disable no-return-assign */
-                input => this.inputRef = input
-              }
+              ref={ input => {
+                this.inputRef = input;
+              } }
             />
             <div className="input-group-btn">
                 <button
@@ -65,15 +63,10 @@ class Searchbox extends React.Component {
     if (this.state.search) {
       this.props.onChange(this.state.search);
     } else {
-      /* eslint-disable no-console */
       console.log('Please input searching creteria.');
     }
     e.preventDefault();
   }
 }
-
-Searchbox.propTypes = {
-  onChange: PropTypes.func.isRequired
-};
 
 export default Searchbox;

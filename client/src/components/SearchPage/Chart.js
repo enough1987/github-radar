@@ -11,100 +11,53 @@ import { sortArrayByfield } from '../../utils';
 let CanvasJS = require('../../assets/canvasjs.min');
 CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
 
-const fakeList = {
-    'Mon Mar 01 2019 00:00:01 GMT+0800 (China Standard Time)' : [
-
-
-    ],
-    'Mon Mar 02 2019 00:00:01 GMT+0800 (China Standard Time)' : [
-        
-    ],
-    'Mon Mar 03 2019 00:00:01 GMT+0800 (China Standard Time)' : [
-        
-    ]
-}
-
-
 export class Chart extends Component {
     state = {
       done: false
     };
 
     renderColumnChart = () => {
-        console.log(this.props.userList);
+      const sortedList = this.props.userList.sort(sortArrayByfield('stars'));
 
-        const sortedList = this.props.userList.sort(sortArrayByfield('stars'));
+      const dataPoints = sortedList.map((item) => {
+        return {
+          label: item.name,
+          y: item.stars
+        };
+      });
 
-        const dataPoints = sortedList.map((item, index) => {
-
-            return {
-                label: item.name,
-                y: item.stars
-            }
-        });
-
-        var chart = new CanvasJS.Chart("chartColumnContainer", {
-            title:{
-                text: "Column chart"              
-            },
-            data: [              
-            {
-                // Change type to "doughnut", "line", "splineArea", etc.
-                type: "column",
-                bevelEnabled: true,
-                indexLabelPlacement: 'inside',
-                dataPoints
-            }
-            ]
-        });
-        chart.render();
+      var chart = new CanvasJS.Chart('chartColumnContainer', {
+        title: {
+          text: 'Column chart'
+        },
+        data: [
+          {
+            type: 'column',
+            bevelEnabled: true,
+            indexLabelPlacement: 'inside',
+            dataPoints
+          }
+        ]
+      });
+      chart.render();
     }
-
-    renderSplineChart = () => {
-        const _dataPoints = [];
-        for ( const date in fakeList) {
-            console.log(date)
-        }
-
-        const dataPoints = this.props.userList.map((item, index) => {
-            return {
-                label: item.name,
-                y: ( index + 1) * 10
-            }
-        });
-
-        var chart = new CanvasJS.Chart("chartSplineContainer", {
-            title:{
-                text: "Spline chart"              
-            },
-            data: [              
-            {
-                // Change type to "doughnut", "line", "splineArea", etc.
-                type: "spline",
-                dataPoints
-            }
-            ]
-        });
-        //chart.render();
-    };
 
     handleGlobalSearch = value => {
       this.props.searchUsers(value)
-        .then(() => this.setState({ done: true }));
+        .then(() => this.setState({ done: true }))
+        /* eslint-disable no-console */
+        .catch(console.error);
     }
 
-    componentDidMount() {
-        this.renderColumnChart();
-        this.renderSplineChart();
+    componentDidMount () {
+      this.renderColumnChart();
     }
 
-    componentDidUpdate() {
-        this.renderColumnChart();
-        this.renderSplineChart();
+    componentDidUpdate () {
+      this.renderColumnChart();
     }
 
     render () {
-
       return (
           <div className="container" style={ { paddingTop: 48 } }>
               <div className="row">
@@ -114,12 +67,9 @@ export class Chart extends Component {
                   </div>
               </div>
               <div className="row" style={ { paddingTop: 10 } }>
-                <div id="chartColumnContainer" 
+                  <div id="chartColumnContainer"
                     style={ { height: '300px', width: '100%' } }>
-                </div>
-                <div id="chartSplineContainer" 
-                    style={ { height: '300px', width: '100%' } }>
-                </div>
+                  </div>
               </div>
           </div>
       );
