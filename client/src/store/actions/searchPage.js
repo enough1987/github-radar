@@ -1,21 +1,13 @@
 
-// TODO: do we need this?
-/* eslint-disable no-unused-vars */
-const _common = (url, actionType) => (page = 1) => dispatch => {
-  return fetch(url + page)
-    .then(res => res.json())
-    .then(
-      (data) => dispatch({ type: actionType, payload: data }),
-      (error) => dispatch({ type: actionType + '_FAIL', error }));
+const headers = {
+  'Content-type': 'application/json',
+  'Accept': 'application/json'
 };
 
 export const searchUsers = keyword => dispatch => {
   return fetch(`/api/list/search/${keyword}`, {
     method: 'GET',
-    headers: {
-      'Content-type': 'application/json',
-      'Accept': 'application/json'
-    }
+    headers
   })
     .then(res => res.json())
     .then(
@@ -46,11 +38,7 @@ export const loadingChangedAction = isLoading => ({
 });
 
 export const loadReposAction = user => dispatch => {
-  const url = '/api/github/' + user;
-  const headers = {
-    'Content-type': 'application/json',
-    'Accept': 'application/json'
-  };
+  const url = '/api/github/' + user;;
   dispatch(loadingChangedAction(true));
 
   return fetch(url, {
