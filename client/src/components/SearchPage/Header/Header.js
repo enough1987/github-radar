@@ -1,52 +1,11 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-export const SortAsc = ({ sort, name }) => (
-    <button
-      type="button"
-      title={ 'sort by ' + name }
-      className="link-button"
-      onClick={ () => sort(name, 'asc') }>
-        <i className="fa fa-sort-up fa-lg"></i>
-    </button>
-);
-SortAsc.propTypes = {
-  name: PropTypes.string.isRequired,
-  sort: PropTypes.func.isRequired
-};
+import SortAsc from '../SortAsc/SortAsc';
+import SortDesc from '../SortDesc/SortDesc';
+import FieldSearch from '../FieldSearch/FieldSearch';
 
-export const SortDesc = ({ sort, name }) => (
-    <button
-      type="button"
-      title={ 'sort by ' + name + ' desc' }
-      className="link-button"
-      onClick={ () => sort(name, 'desc') }>
-        <i className="fa fa-sort-down fa-lg"></i>
-    </button>
-);
-SortDesc.propTypes = {
-  name: PropTypes.string.isRequired,
-  sort: PropTypes.func.isRequired
-};
-
-export let FieldSearch = ({ name, onSearch }) => (
-    <div className="input-group">
-        <input
-          type="search"
-          className="form-control"
-          placeholder={ name }
-          name="field_search"
-          title="search in this page"
-          onChange={ e => onSearch(e, name) }
-        />
-    </div>
-);
-FieldSearch.propTypes = {
-  name: PropTypes.string.isRequired,
-  onSearch: PropTypes.func.isRequired
-};
-
-export const Header = ({ sort, onSearch }) => (
+const Header = ({ sort, onSearch }) => (
     <thead>
         <tr>
             <th scope="row">#</th>
@@ -100,26 +59,4 @@ Header.propTypes = {
   sort: PropTypes.func.isRequired
 };
 
-export const Detail = ({ idx, item, onEdit, onDelete }) => {
-  const { created, updated, name, forks, stars, size, url, desc, language } = item;
-  return (
-      <tr>
-          <td>{idx + 1}</td>
-          <td>{name}</td>
-          <td>{url}</td>
-          <td>{language}</td>
-          <td>{desc}</td>
-          <td>{stars}</td>
-          <td>{forks}</td>
-          <td>{size}</td>
-          <td>{created}</td>
-          <td>{updated}</td>
-      </tr>
-  );
-};
-Detail.propTypes = {
-  idx: PropTypes.number.isRequired,
-  item: PropTypes.object.isRequired,
-  onEdit: PropTypes.func,
-  onDelete: PropTypes.func
-};
+export default Header;

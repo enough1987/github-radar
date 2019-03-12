@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import * as ListAction from '../../../store/actions';
-import Searchbox from '../../Search/Search';
-import SearchPageNavigator from '../SearchPageNavigator';
 import { sortArrayByfield } from '../../../utils';
 
 let CanvasJS = require('../../../assets/canvasjs.min');
@@ -42,13 +38,6 @@ export class Chart extends Component {
       chart.render();
     }
 
-    handleGlobalSearch = value => {
-      this.props.searchUsers(value)
-        .then(() => this.setState({ done: true }))
-        /* eslint-disable no-console */
-        .catch(console.error);
-    }
-
     componentDidMount () {
       this.renderColumnChart();
     }
@@ -59,19 +48,12 @@ export class Chart extends Component {
 
     render () {
       return (
-          <div className="container" style={ { paddingTop: 48 } }>
-              <div className="row">
-                  <div className="col-md-10">
-                      <SearchPageNavigator />
-                      <Searchbox onChange={ this.handleGlobalSearch }/>
-                  </div>
-              </div>
-              <div className="row" style={ { paddingTop: 10 } }>
-                  <div id="chartColumnContainer"
-                    style={ { height: '300px', width: '100%' } }>
-                  </div>
+          <div className="row" style={ { paddingTop: 10 } }>
+              <div id="chartColumnContainer"
+                style={ { height: '300px', width: '100%' } }>
               </div>
           </div>
+
       );
     }
 }
@@ -79,14 +61,11 @@ export class Chart extends Component {
 Chart.propTypes = {
   userList: PropTypes.arrayOf(
     PropTypes.object
-  ).isRequired,
-  searchUsers: PropTypes.func.isRequired
+  ).isRequired
 };
 
 Chart.defaultProps = {
-  userList: [],
-  /* eslint-disable no-console */
-  searchUsers: () => { console.error('function is not provided'); }
+  userList: []
 };
 
 const mapStateToProps = (state) => {
@@ -96,7 +75,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(ListAction, dispatch);
+  return {};
 };
 
 export default connect(
