@@ -38,7 +38,7 @@ export const loadingChangedAction = isLoading => ({
 });
 
 export const loadReposAction = user => dispatch => {
-  const url = '/api/github/' + user;;
+  const url = '/api/github/' + user;
   dispatch(loadingChangedAction(true));
 
   return fetch(url, {
