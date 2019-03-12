@@ -3,12 +3,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import * as ListAction from '../../store/actions';
-import Searchbox from '../Search';
-import SearchPageNavigator from './SearchPageNavigator';
-import { sortArrayByfield } from '../../utils';
+import * as ListAction from '../../../store/actions';
+import Searchbox from '../../Search';
+import SearchPageNavigator from '../SearchPageNavigator';
+import { sortArrayByfield } from '../../../utils';
 
-let CanvasJS = require('../../assets/canvasjs.min');
+let CanvasJS = require('../../../assets/canvasjs.min');
 CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
 
 export class Chart extends Component {

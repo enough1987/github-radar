@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { PropTypes } from 'prop-types';
-
-import Searchbox from '../components/Search';
-import SearchPageNavigator from '../components/SearchPage/SearchPageNavigator';
 
 export const SortAsc = ({ sort, name }) => (
     <button
@@ -122,41 +119,7 @@ export const Detail = ({ idx, item, onEdit, onDelete }) => {
 };
 Detail.propTypes = {
   idx: PropTypes.number.isRequired,
-  item: PropTypes.arrayOf(
-    PropTypes.object
-  ).isRequired,
-  onEdit: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired
-};
-
-export class Chart extends Component {
-  state = {
-    done: false
-  };
-
-  handleGlobalSearch = value => {
-    this.props.searchUsers(value)
-      .then(() => this.setState({ done: true }))
-      /* eslint-disable no-console */
-      .catch(console.error);
-  }
-
-  render () {
-    return (
-        <div className="container" style={ { paddingTop: 48 } }>
-            <div className="row">
-                <div className="col-md-10">
-                    <SearchPageNavigator />
-                    <Searchbox onChange={ this.handleGlobalSearch }/>
-                </div>
-            </div>
-            <div className="row" style={ { paddingTop: 10 } }>
-                CHART
-            </div>
-        </div>
-    );
-  }
-}
-Chart.propTypes = {
-  searchUsers: PropTypes.func.isRequired
+  item: PropTypes.object.isRequired,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func
 };

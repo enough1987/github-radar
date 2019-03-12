@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import * as ListAction from '../../store/actions';
-import { searchFields } from '../../store/reducers';
-import Searchbox from '../Search';
-import SearchPageNavigator from './SearchPageNavigator';
-import { Header, Detail } from '../../containers/SearchPage';
+import * as ListAction from '../../../store/actions';
+import { searchFields } from '../../../store/reducers';
+import Searchbox from '../../Search';
+import SearchPageNavigator from '../SearchPageNavigator';
+import { Header, Detail } from '../../../containers/SearchPage';
 
 export class List extends Component {
     state = {
