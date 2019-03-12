@@ -1,7 +1,10 @@
 .header {
-  height: 60px;
+  height: 100px;
   background-image: url(https://www.epam.com/etc/designs/epam-core/images/components/redesign/background-video/bg-video.png);
   letter-spacing: .1rem;
+  width: 100%;
+  position: fixed;
+  z-index: 101;
 }
 .header h1 {
   margin-bottom: 0;
@@ -13,6 +16,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 0;
 }
 .navigator {
   display: flex;
