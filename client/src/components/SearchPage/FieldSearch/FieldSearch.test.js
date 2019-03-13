@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom';
 import FieldSearch from './FieldSearch';
 
 describe('FieldSearch ', () => {
-    
   let props;
 
   beforeEach(() => {
-    props = { 
-      onSearch: ()=> {},
+    props = {
+      onSearch: () => {},
       name: 'FieldSearch'
     };
   });

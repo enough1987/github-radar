@@ -28,5 +28,8 @@ describe('SearchPage ', () => {
   it('renders without crashing', () => {
     const wrapper = setup();
     const component = findByAttr(wrapper, 'search-page');
+
+    expect(component)
+      .toBeTruthy();
   });
 });

@@ -4,11 +4,10 @@ import ReactDOM from 'react-dom';
 import SortDesc from './SortDesc';
 
 describe('SortDesc ', () => {
-
   let props;
 
   beforeEach(() => {
-    props = { name: 'desc', sort: ()=> {} };
+    props = { name: 'desc', sort: () => {} };
   });
 
   it('renders without crashing', () => {

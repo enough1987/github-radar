@@ -39,7 +39,8 @@ export class List extends Component {
       }
 
       return (
-          <div className="row" style={ { paddingTop: 10 } }>
+          <div className="row" style={ { paddingTop: 10 } }
+            data-test="list">
               <table className="table table-bordered">
                   <Header sort={ sortAction } onSearch={ this.handleSearch }/>
                   <tbody>

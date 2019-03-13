@@ -1,12 +1,32 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { shallow } from 'enzyme';
 
+import { findByAttr } from '../../utils/testUtils';
 import App from './App';
 
 describe('App ', () => {
+  let setup;
+  let defaultProps;
+
+  beforeEach(() => {
+    defaultProps = { };
+
+    setup = (props = defaultProps) => {
+      const wrapper = shallow(
+          <Router>
+              <App { ...props } />
+          </Router>
+      );
+      return wrapper;
+    };
+  });
+
   it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
-    ReactDOM.unmountComponentAtNode(div);
+    const wrapper = setup();
+    const component = findByAttr(wrapper, 'App');
+
+    expect(component)
+      .toBeTruthy();
   });
 });

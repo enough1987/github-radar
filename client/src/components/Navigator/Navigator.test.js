@@ -8,7 +8,7 @@ describe('Navigator ', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Router>
-      <Navigator />
+        <Navigator />
     </Router>, div);
     ReactDOM.unmountComponentAtNode(div);
   });

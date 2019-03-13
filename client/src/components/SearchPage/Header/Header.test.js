@@ -4,13 +4,12 @@ import ReactDOM from 'react-dom';
 import Header from './Header';
 
 describe('Header ', () => {
-  
   let props;
 
   beforeEach(() => {
-    props = { 
-      onSearch: ()=> {},
-      sort: ()=> {}
+    props = {
+      onSearch: () => {},
+      sort: () => {}
     };
   });
 

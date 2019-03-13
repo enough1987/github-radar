@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 
 import Detail from './Detail';
 
-describe('Detail ', () => {    
+describe('Detail ', () => {
   let props;
 
   beforeEach(() => {
-    props = { 
+    props = {
       idx: 1,
       item: {},
       onEdit: () => {},

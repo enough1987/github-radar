@@ -7,8 +7,8 @@ describe('SearchButton ', () => {
   let props;
 
   beforeEach(() => {
-    props = { 
-      clickHandler: ()=> {}
+    props = {
+      clickHandler: () => {}
     };
   });
 
