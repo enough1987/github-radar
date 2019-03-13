@@ -2,33 +2,89 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { sortArrayByfield } from '../../../utils';
+import userListMock from '../../../assets/userList';
 
 import CanvasJSReact from '../../../assets/canvasjs.react';
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export class Chart extends Component {
   getChartOptions = () => {
-    const sortedList = this.props.userList.sort(sortArrayByfield('stars'));
+    const options = [];
 
-    const dataPoints = sortedList.map((item) => {
-      return {
-        label: item.name,
-        y: item.stars
-      };
-    });
+    Object.entries(userListMock).forEach(
+      ([key, list], index) => {
+        const dataPoints = list.map((item) => {
+          return {
+            x: new Date(item.date),
+            y: item.stars
+          };
+        });
+        options[index] = {
+          name: key,
+          dataPoints
+        };
+      }
+    );
+
+    console.log(options);
 
     return {
+      theme: 'light2',
+      animationEnabled: true,
       title: {
-        text: 'Column chart'
+        text: 'Spline chart'
       },
-      data: [
-        {
-          type: 'column',
-          bevelEnabled: true,
-          indexLabelPlacement: 'inside',
-          dataPoints
-        }
+      toolTip: {
+        shared: true
+      },
+      legend: {
+        cursor: 'pointer',
+        itemclick: this.toggleDataSeries
+      },
+      data: [{
+        type: 'spline',
+        name: options[0].name,
+        showInLegend: true,
+        xValueFormatString: 'MMM YYYY',
+        yValueFormatString: '#,##0',
+        dataPoints: options[0].dataPoints
+      },
+      {
+        type: 'spline',
+        name: options[1].name,
+        axisYType: 'secondary',
+        showInLegend: true,
+        xValueFormatString: 'MMM YYYY',
+        yValueFormatString: '#,##0',
+        dataPoints: options[1].dataPoints
+      },
+      {
+        type: 'spline',
+        name: options[2].name,
+        axisYType: 'secondary',
+        showInLegend: true,
+        xValueFormatString: 'MMM YYYY',
+        yValueFormatString: '#,##0',
+        dataPoints: options[2].dataPoints
+      },
+      {
+        type: 'spline',
+        name: options[3].name,
+        axisYType: 'secondary',
+        showInLegend: true,
+        xValueFormatString: 'MMM YYYY',
+        yValueFormatString: '#,##0',
+        dataPoints: options[3].dataPoints
+      },
+      {
+        type: 'spline',
+        name: options[4].name,
+        axisYType: 'secondary',
+        showInLegend: true,
+        xValueFormatString: 'MMM YYYY',
+        yValueFormatString: '#,##0',
+        dataPoints: options[4].dataPoints
+      }
       ]
     };
   }
@@ -50,7 +106,7 @@ export class Chart extends Component {
 Chart.propTypes = {
   userList: PropTypes.arrayOf(
     PropTypes.object
-  ).isRequired
+  )// .isRequired // TODO: with real data change to required
 };
 
 Chart.defaultProps = {
