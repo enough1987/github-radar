@@ -1,6 +1,6 @@
 .footer {
     position: fixed;
-    height: 5%;
+    height: 8%;
     bottom: 0;
     color: #fff;
     background: #231f20;
@@ -13,7 +13,6 @@
     padding: 0;
     color: #fff;
     font-weight: 300;
-    font-size: 1.3rem;
-    font: 1.7rem/1.5 "Source Sans Pro","Hiragino Sans GB","Microsoft JhengHei",arial,helvetica,sans-serif;
+    font: 1.3rem "Source Sans Pro","Hiragino Sans GB","Microsoft JhengHei",arial,helvetica,sans-serif;
     letter-spacing: .085rem;
 }

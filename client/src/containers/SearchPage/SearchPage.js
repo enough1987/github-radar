@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-
+import SearchPageNavigator from '../../components/SearchPage/SearchPageNavigator/SearchPageNavigator';
 import Searchbox from '../../components/Searchbox/Searchbox';
 import * as ListAction from '../../store/actions/searchPage';
 
@@ -25,6 +25,7 @@ export class SearchPage extends Component {
       return (
           <div className="container" style={ { paddingTop: 48 } }
             data-test="search-page">
+              <SearchPageNavigator />
               <div className="row">
                   <div className="col-md-10">
                       <Searchbox onChange={ this.handleGlobalSearch } />
