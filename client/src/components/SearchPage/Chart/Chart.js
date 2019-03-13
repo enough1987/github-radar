@@ -52,7 +52,6 @@ export class Chart extends Component {
       {
         type: 'spline',
         name: options[1].name,
-        axisYType: 'secondary',
         showInLegend: true,
         xValueFormatString: 'MMM YYYY',
         yValueFormatString: '#,##0',
@@ -61,7 +60,6 @@ export class Chart extends Component {
       {
         type: 'spline',
         name: options[2].name,
-        axisYType: 'secondary',
         showInLegend: true,
         xValueFormatString: 'MMM YYYY',
         yValueFormatString: '#,##0',
@@ -70,7 +68,6 @@ export class Chart extends Component {
       {
         type: 'spline',
         name: options[3].name,
-        axisYType: 'secondary',
         showInLegend: true,
         xValueFormatString: 'MMM YYYY',
         yValueFormatString: '#,##0',
@@ -79,7 +76,6 @@ export class Chart extends Component {
       {
         type: 'spline',
         name: options[4].name,
-        axisYType: 'secondary',
         showInLegend: true,
         xValueFormatString: 'MMM YYYY',
         yValueFormatString: '#,##0',
