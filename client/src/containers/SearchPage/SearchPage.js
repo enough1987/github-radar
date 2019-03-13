@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import Searchbox from '../../components/Searchbox/Searchbox';
-import SearchPageNavigator from '../../components/SearchPage/SearchPageNavigator/SearchPageNavigator';
 import * as ListAction from '../../store/actions/searchPage';
 
 export class SearchPage extends Component {
@@ -28,7 +27,6 @@ export class SearchPage extends Component {
             data-test="search-page">
               <div className="row">
                   <div className="col-md-10">
-                      <SearchPageNavigator />
                       <Searchbox onChange={ this.handleGlobalSearch } />
                   </div>
               </div>
