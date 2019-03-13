@@ -5,7 +5,7 @@ const headers = {
 };
 
 export const searchUsers = keyword => dispatch => {
-  return fetch(`/api/list/search/${keyword}`, {
+  return fetch(`/api/github/search/${keyword}`, {
     method: 'GET',
     headers
   })
