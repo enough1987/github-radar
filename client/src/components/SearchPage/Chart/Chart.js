@@ -4,54 +4,47 @@ import PropTypes from 'prop-types';
 
 import { sortArrayByfield } from '../../../utils';
 
-let CanvasJS = require('../../../assets/canvasjs.min');
-CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
+import CanvasJSReact from '../../../assets/canvasjs.react';
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export class Chart extends Component {
-    renderColumnChart = () => {
-      const sortedList = this.props.userList.sort(sortArrayByfield('stars'));
+  getChartOptions = () => {
+    const sortedList = this.props.userList.sort(sortArrayByfield('stars'));
 
-      const dataPoints = sortedList.map((item) => {
-        return {
-          label: item.name,
-          y: item.stars
-        };
-      });
+    const dataPoints = sortedList.map((item) => {
+      return {
+        label: item.name,
+        y: item.stars
+      };
+    });
 
-      var chart = new CanvasJS.Chart('chartColumnContainer', {
-        title: {
-          text: 'Column chart'
-        },
-        data: [
-          {
-            type: 'column',
-            bevelEnabled: true,
-            indexLabelPlacement: 'inside',
-            dataPoints
-          }
-        ]
-      });
-      chart.render();
-    }
+    return {
+      title: {
+        text: 'Column chart'
+      },
+      data: [
+        {
+          type: 'column',
+          bevelEnabled: true,
+          indexLabelPlacement: 'inside',
+          dataPoints
+        }
+      ]
+    };
+  }
 
-    componentDidMount () {
-      this.renderColumnChart();
-    }
+  render () {
+    const chartOptions = this.getChartOptions();
 
-    componentDidUpdate () {
-      this.renderColumnChart();
-    }
-
-    render () {
-      return (
-          <div className="row" style={ { paddingTop: 10 } }
-            data-test="data-chart" >
-              <div id="chartColumnContainer"
-                style={ { height: '300px', width: '100%' } }>
-              </div>
-          </div>
-      );
-    }
+    return (
+        <div className="row" style={ { paddingTop: 10 } }
+          data-test="data-chart" >
+            <CanvasJSChart options = { chartOptions }
+              /* onRef = {ref => this.chart = ref} */
+            />
+        </div>
+    );
+  }
 }
 
 Chart.propTypes = {
