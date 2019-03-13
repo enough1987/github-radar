@@ -1,5 +1,7 @@
 import React from 'react';
 import Navigator from '../Navigator/Navigator';
+import { withRouter } from 'react-router';
+
 import './Header.css';
 
 const Header = () => (
@@ -13,4 +15,4 @@ const Header = () => (
     </React.Fragment>
 );
 
-export default Header;
+export default withRouter(Header);

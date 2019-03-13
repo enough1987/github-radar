@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 const SearchPageNavigator = () => (
     <React.Fragment>
@@ -14,4 +15,4 @@ const SearchPageNavigator = () => (
     </React.Fragment>
 );
 
-export default SearchPageNavigator;
+export default withRouter(SearchPageNavigator);

@@ -9,7 +9,7 @@ describe('Searchbox ', () => {
 
   beforeEach(() => {
     props = { 
-      onSearch: ()=> {}
+      onChange: ()=> {}
     };
   });
 

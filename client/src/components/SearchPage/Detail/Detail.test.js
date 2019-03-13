@@ -3,10 +3,21 @@ import ReactDOM from 'react-dom';
 
 import Detail from './Detail';
 
-describe('Detail ', () => {
+describe('Detail ', () => {    
+  let props;
+
+  beforeEach(() => {
+    props = { 
+      idx: 1,
+      item: {},
+      onEdit: () => {},
+      onDelete: () => {}
+    };
+  });
+
   it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Detail />, div);
-    ReactDOM.unmountComponentAtNode(div);
+    const tbody = document.createElement('tbody');
+    ReactDOM.render(<Detail { ...props } />, tbody);
+    ReactDOM.unmountComponentAtNode(tbody);
   });
 });

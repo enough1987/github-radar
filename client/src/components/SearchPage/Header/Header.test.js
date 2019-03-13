@@ -15,8 +15,8 @@ describe('Header ', () => {
   });
 
   it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Header { ...props } />, div);
-    ReactDOM.unmountComponentAtNode(div);
+    const table = document.createElement('table');
+    ReactDOM.render(<Header { ...props } />, table);
+    ReactDOM.unmountComponentAtNode(table);
   });
 });
