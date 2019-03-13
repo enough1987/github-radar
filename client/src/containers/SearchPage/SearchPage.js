@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import Searchbox from '../../components/Searchbox/Searchbox';
 import SearchPageNavigator from '../../components/SearchPage/SearchPageNavigator/SearchPageNavigator';
@@ -23,11 +24,12 @@ export class SearchPage extends Component {
 
     render () {
       return (
-          <div className="container" style={ { paddingTop: 48 } }>
+          <div className="container" style={ { paddingTop: 48 } }
+            data-test="search-page">
               <div className="row">
                   <div className="col-md-10">
                       <SearchPageNavigator />
-                      <Searchbox onChange={ this.handleGlobalSearch }/>
+                      <Searchbox onChange={ this.handleGlobalSearch } />
                   </div>
               </div>
               { this.props.children }
@@ -49,7 +51,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(ListAction, dispatch);
 };
 
-export default connect(
+export default withRouter(connect(
   null,
   mapDispatchToProps
-)(SearchPage);
+)(SearchPage));

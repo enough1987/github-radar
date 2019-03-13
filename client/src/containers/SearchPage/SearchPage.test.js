@@ -1,11 +1,32 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { shallow } from 'enzyme';
 
-describe('App ', () => {
+import { findByAttr, storeFactory } from '../../utils/testUtils';
+import SearchPage from './SearchPage';
+
+describe('SearchPage ', () => {
+  let setup;
+  let defaultProps;
+  let searchUsers;
+
+  beforeEach(() => {
+    searchUsers = jest.fn();
+    defaultProps = { children: <div data-test="search-chield" ></div>, searchUsers };
+
+    setup = (props = defaultProps, initialState = {}) => {
+      const store = storeFactory(initialState);
+      const wrapper = shallow(
+          <Router>
+              <SearchPage { ...props } store={ store } />
+          </Router>
+      );
+      return wrapper;
+    };
+  });
+
   it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
-    ReactDOM.unmountComponentAtNode(div);
+    const wrapper = setup();
+    const component = findByAttr(wrapper, 'search-page');
   });
 });

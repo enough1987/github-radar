@@ -8,10 +8,6 @@ let CanvasJS = require('../../../assets/canvasjs.min');
 CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
 
 export class Chart extends Component {
-    state = {
-      done: false
-    };
-
     renderColumnChart = () => {
       const sortedList = this.props.userList.sort(sortArrayByfield('stars'));
 
@@ -48,12 +44,12 @@ export class Chart extends Component {
 
     render () {
       return (
-          <div className="row" style={ { paddingTop: 10 } }>
+          <div className="row" style={ { paddingTop: 10 } }
+            data-test="data-chart" >
               <div id="chartColumnContainer"
                 style={ { height: '300px', width: '100%' } }>
               </div>
           </div>
-
       );
     }
 }

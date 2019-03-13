@@ -14,8 +14,7 @@ export class List extends Component {
       totalPage: 1,
       totalUsers: 0,
       searchValue: '',
-      searchField: '',
-      done: false
+      searchField: ''
     };
 
     handleSearch = (e, field) => {
