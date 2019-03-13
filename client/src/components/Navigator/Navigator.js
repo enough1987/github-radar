@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Navigator = () => (
     <React.Fragment>
         <div className="navigator">
-            <NavLink exact className="nav-link" activeclassname="active" to="/search/list">Search</NavLink>{' | '}
+            <NavLink className="nav-link" activeclassname="active" to="/search/">Search</NavLink>{' | '}
             <NavLink exact className="nav-link" activeclassname="active" to="/about">About</NavLink>{' | '}
             <NavLink exact className="nav-link" activeclassname="active" to="/contact">Contact</NavLink>
         </div>

@@ -1,17 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 const SearchPageNavigator = () => (
     <React.Fragment>
-        <div style={ { float: 'right' } }>
-            <NavLink exact activeStyle={ { color: 'green' } } to="/search/list"> List
-                <i className="fa fa-list-ul"></i>
+        <div className="view-navigator" style={ { float: 'right' } }>
+            <NavLink exact activeStyle={ { color: '#39c2d7' } } to="/search/list"> List View
             </NavLink>{' | '}
-            <NavLink activeStyle={ { color: 'green' } } to="/search/chart"> Chart
-                <i className="fas fa-chart-bar"></i>
+            <NavLink activeStyle={ { color: '#39c2d7' } } to="/search/chart"> Chart View
             </NavLink>
         </div>
     </React.Fragment>
 );
 
-export default SearchPageNavigator;
+export default withRouter(SearchPageNavigator);

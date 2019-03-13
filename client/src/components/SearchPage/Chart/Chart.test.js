@@ -1,12 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 
-import Chart from './Chart';
+import { findByAttr, storeFactory } from '../../../utils/testUtils';
+import { Chart } from './Chart';
 
 describe('Chart ', () => {
+  let setup;
+  let defaultProps;
+
+  beforeEach(() => {
+    defaultProps = { userList: [] };
+
+    setup = (props = defaultProps, initialState = {}) => {
+      const store = storeFactory(initialState);
+      const wrapper = shallow(<Chart { ...props } store={ store } />);
+      return wrapper;
+    };
+  });
+
   it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Chart />, div);
-    ReactDOM.unmountComponentAtNode(div);
+
   });
 });

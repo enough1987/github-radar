@@ -23,6 +23,10 @@
   align-items: center;
   color: #fff;
 }
+
+.view-navigator a {
+  color: #222;
+}
 .navigator .nav-link {
   color: #fff;
   transition: color ease .4s;

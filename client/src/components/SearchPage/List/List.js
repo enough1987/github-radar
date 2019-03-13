@@ -14,8 +14,7 @@ export class List extends Component {
       totalPage: 1,
       totalUsers: 0,
       searchValue: '',
-      searchField: '',
-      done: false
+      searchField: ''
     };
 
     handleSearch = (e, field) => {
@@ -40,7 +39,8 @@ export class List extends Component {
       }
 
       return (
-          <div className="row" style={ { paddingTop: 10 } }>
+          <div className="row" style={ { paddingTop: 10 } }
+            data-test="list">
               <table className="table table-bordered">
                   <Header sort={ sortAction } onSearch={ this.handleSearch }/>
                   <tbody>
