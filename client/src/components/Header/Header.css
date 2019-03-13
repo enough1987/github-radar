@@ -27,6 +27,9 @@
 .view-navigator a {
   color: #222;
 }
+.view-navigator {
+  float: right;
+}
 .navigator .nav-link {
   color: #fff;
   transition: color ease .4s;
