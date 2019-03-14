@@ -6,6 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import List from '../../components/SearchPage/List/List';
 import Chart from '../../components/SearchPage/Chart/Chart';
 import SearchPage from '../SearchPage/SearchPage';
+import AboutPage from '../AboutPage/AboutPage';
 import './App.css';
 
 const UserLoginRouters = () => (
@@ -19,7 +20,7 @@ const UserLoginRouters = () => (
                 </Switch>
             </SearchPage>
         }/>
-        <Route path="/about" render={ () => <h1>About</h1> }/>
+        <Route path="/about" component={ AboutPage }/>
         <Route path="/contact" render={ () => <h1>Contact</h1> }/>
         <Route render={ () => <Redirect to="/search/list"/> }/>
     </Switch>

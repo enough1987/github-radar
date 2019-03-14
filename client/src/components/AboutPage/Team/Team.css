@@ -1,0 +1,84 @@
+.about-team {
+  padding: 30px 0;
+  color: #222;
+  text-align: center;
+}
+.about-team h2 {
+  color: #222;
+}
+.team-content {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.team-content .row {
+  justify-content: center;
+}
+.team-member {
+  position: relative;
+  margin: 5px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+.team-member-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background-color: #76cdd8;
+}
+.team-member-photo image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.team-member-photo i {
+  font-size: 2rem;
+  color: #fff;
+}
+.team-memeber-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.4);
+  transition: top ease .4s;
+}
+.team-memeber-info p {
+  margin: 0;
+  text-align: center;
+  color: #fff;
+}
+.team-member:hover .team-member-photo image {
+  transform: scale(1.5);
+}
+.team-member:hover .team-memeber-info {
+  top: 0;
+}
+@media (max-width: 768px) {
+  .team-content .row {
+    flex-direction: column;
+    margin: 0;
+  }
+  .team-member {
+    display: flex;
+    width: auto;
+    background-color: #eee;
+  }
+  .team-memeber-info {
+    position: static;
+    flex: 1;
+    width: auto;
+    padding-left: 20px;
+    background-color: transparent;
+  }
+  .team-memeber-info p {
+    text-align: left;
+    color: #222;
+  }
+}

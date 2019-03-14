@@ -1,22 +1,36 @@
 .header {
-  height: 100px;
-  background-image: url(https://www.epam.com/etc/designs/epam-core/images/components/redesign/background-video/bg-video.png);
-  letter-spacing: .1rem;
+  position: relative;
+  height: 60px;
+}
+.header-fixed {
+  height: inherit;
+  /* background-image: url(https://www.epam.com/etc/designs/epam-core/images/components/redesign/background-video/bg-video.png); */
+  background-color: #222;
+  letter-spacing: .085rem;
   width: 100%;
   position: fixed;
   z-index: 101;
 }
+.header_logo {
+  margin-top: .4rem;
+  height: 2rem;
+}
 .header h1 {
+  flex: 1;
   margin-bottom: 0;
+  text-align: left;
   font-size: 1.8rem;
   color: #fff;
 }
 .header .container {
   height: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding-top: 0;
+}
+.header-cut-line {
+  color: #ccc;
+  padding: 0 1rem;
 }
 .navigator {
   display: flex;
@@ -35,10 +49,10 @@
   transition: color ease .4s;
 }
 .navigator .nav-link:hover {
-  color: #222;
+  color: #76cdd8;
 }
 .navigator .nav-link.active {
-  color: #222;
+  color: #76cdd8;
 }
 @media (max-width: 768px) {
   .header {
