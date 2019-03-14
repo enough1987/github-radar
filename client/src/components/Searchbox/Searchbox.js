@@ -1,7 +1,7 @@
 /* eslint react/no-array-index-key: 0 */ // --> OFF
 import React from 'react';
 import PropTypes from 'prop-types';
-import SearchButton from '../Common/SearchButton.js';
+import SearchButton from '../Common/SearchButton/SearchButton.js';
 
 import Languages from '../../assets/languages';
 

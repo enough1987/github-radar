@@ -1,11 +1,15 @@
+/* eslint react/no-array-index-key: 0 */ // --> OFF
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
+import './Chart.css';
 import userListMock from '../../../assets/userList';
 
 import CanvasJSReact from '../../../assets/canvasjs.react';
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
+const colors = [ '#3f587f', '#56e2a3', '#c5f722', '#f76e4c', '#f7f44c' ];
 
 export class Chart extends Component {
   getChartOptions = () => {
@@ -16,7 +20,7 @@ export class Chart extends Component {
         const dataPoints = list.map((item) => {
           return {
             x: new Date(item.date),
-            y: item.stars
+            y: item.total_count
           };
         });
         options[index] = {
@@ -25,8 +29,6 @@ export class Chart extends Component {
         };
       }
     );
-
-    console.log(options);
 
     return {
       theme: 'light2',
@@ -41,72 +43,57 @@ export class Chart extends Component {
         cursor: 'pointer',
         itemclick: this.toggleDataSeries
       },
-      data: [{
-        type: 'spline',
-        name: options[0].name,
-        showInLegend: true,
-        xValueFormatString: 'MMM YYYY',
-        yValueFormatString: '#,##0',
-        dataPoints: options[0].dataPoints
-      },
-      {
-        type: 'spline',
-        name: options[1].name,
-        showInLegend: true,
-        xValueFormatString: 'MMM YYYY',
-        yValueFormatString: '#,##0',
-        dataPoints: options[1].dataPoints
-      },
-      {
-        type: 'spline',
-        name: options[2].name,
-        showInLegend: true,
-        xValueFormatString: 'MMM YYYY',
-        yValueFormatString: '#,##0',
-        dataPoints: options[2].dataPoints
-      },
-      {
-        type: 'spline',
-        name: options[3].name,
-        showInLegend: true,
-        xValueFormatString: 'MMM YYYY',
-        yValueFormatString: '#,##0',
-        dataPoints: options[3].dataPoints
-      },
-      {
-        type: 'spline',
-        name: options[4].name,
-        showInLegend: true,
-        xValueFormatString: 'MMM YYYY',
-        yValueFormatString: '#,##0',
-        dataPoints: options[4].dataPoints
-      }
-      ]
+      data: options.map((item, index) => {
+        return {
+          type: 'spline',
+          name: item.name,
+          color: colors[index],
+          showInLegend: true,
+          xValueFormatString: 'MMM YYYY',
+          yValueFormatString: '#,##0',
+          dataPoints: item.dataPoints
+        };
+      })
     };
+  }
+
+  getListOfNames = (chartOptions) => {
+    return chartOptions.data.map((item, index) => {
+      return <div key={ index }
+        style={ { color: colors[index] } }>
+          { '- ' + item.name }
+      </div>;
+    });
   }
 
   render () {
     const chartOptions = this.getChartOptions();
+    const listOfNames = this.getListOfNames(chartOptions);
 
     return (
         <div className="row" style={ { paddingTop: 10 } }
           data-test="data-chart" >
-            <CanvasJSChart options = { chartOptions }
-              /* onRef = {ref => this.chart = ref} */
-            />
+            <div className="chart-left col-10" >
+                <CanvasJSChart options = { chartOptions }
+                /* onRef = {ref => this.chart = ref} */
+                />
+            </div>
+            <div className="chart-right col-2">
+                { listOfNames }
+            </div>
         </div>
     );
   }
 }
 
 Chart.propTypes = {
-  userList: PropTypes.arrayOf(
-    PropTypes.object
-  )// .isRequired // TODO: with real data change to required
+  // userList: PropTypes.arrayOf(
+  //  PropTypes.object
+  // ).isRequired // TODO: with real data change to required
 };
 
 Chart.defaultProps = {
-  userList: []
+  // userList: []
 };
 
 const mapStateToProps = (state) => {

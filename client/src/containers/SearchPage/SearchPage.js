@@ -16,6 +16,7 @@ export class SearchPage extends Component {
       displayBanner: !(localStorage.getItem('displayBanner') === 'false')
     };
   }
+
     handleGlobalSearch = value => {
       localStorage.setItem('displayBanner', 'false');
       this.setState({

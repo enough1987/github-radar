@@ -1,15 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { findByAttr, storeFactory } from '../../../utils/testUtils';
+import { storeFactory } from '../../../utils/testUtils';
 import { Chart } from './Chart';
 
 describe('Chart ', () => {
+  /* eslint-disable no-unused-vars */
   let setup;
   let defaultProps;
 
   beforeEach(() => {
-    defaultProps = { userList: [] };
+    defaultProps = { /* userList: [] */ };
 
     setup = (props = defaultProps, initialState = {}) => {
       const store = storeFactory(initialState);
