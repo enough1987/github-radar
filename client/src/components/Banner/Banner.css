@@ -1,0 +1,22 @@
+.banner {
+    height: 26.8rem;
+}
+.background-video__container {
+    width: 100%;
+    z-index: -1;
+    left: 0;
+    top: 0;
+}
+.banner p {
+    font-size: 8rem;
+    line-height: 12rem;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    max-width: 100%;
+    padding: 0;
+}

@@ -1,11 +1,18 @@
 import React from 'react';
+import Navigator from '../Navigator/Navigator';
+import { withRouter } from 'react-router';
+
+import './Header.css';
 
 const Header = () => (
     <React.Fragment>
         <div className="header">
-            <h1>GitHub Radar POC</h1>
+            <div className="container">
+                <h1>GitHub Radar POC</h1>
+                <Navigator />
+            </div>
         </div>
     </React.Fragment>
 );
 
-export default Header;
+export default withRouter(Header);

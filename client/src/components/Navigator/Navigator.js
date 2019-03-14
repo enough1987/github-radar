@@ -3,16 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 const Navigator = () => (
     <React.Fragment>
-        <div style={ { float: 'right', marginRight: '30px' } }>
-            <NavLink exact activeStyle={ { color: 'green' } } to="/search/list">Search
-                <i className="fa fa-user"></i>
-            </NavLink>{' | '}
-            <NavLink exact activeStyle={ { color: 'green' } } to="/about">About
-                <i className="fa fa-sign-in"></i>
-            </NavLink>{' | '}
-            <NavLink exact activeStyle={ { color: 'green' } } to="/contact">Contact
-                <i className="fa fa-sign-out"></i>
-            </NavLink>
+        <div className="navigator">
+            <NavLink className="nav-link" activeclassname="active" to="/search/">Search</NavLink>{' | '}
+            <NavLink exact className="nav-link" activeclassname="active" to="/about">About</NavLink>{' | '}
+            <NavLink exact className="nav-link" activeclassname="active" to="/contact">Contact</NavLink>
         </div>
     </React.Fragment>
 );

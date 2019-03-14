@@ -7,7 +7,7 @@
     "react": "^16.8.4",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.8.4",
-    "react-redux": "^6.0.1",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
@@ -17,21 +17,44 @@
     "concurrently": "^4.1.0"
   },
   "devDependencies": {
-    "eslint": "^5.12.0",
+    "check-prop-types": "^1.1.2",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "eslint": "5.12.0",
+    "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jest": "^22.3.0",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "eslint-plugin-standard": "^4.0.0"
+    "eslint-plugin-standard": "^4.0.0",
+    "jest-fetch-mock": "^2.1.1",
+    "react-test-renderer": "^16.8.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix src/**/*.js src/**/**/*.js src/**/**/**/*.js"
+    "lint": "eslint --fix src/*.js src/**/*.js src/**/**/*.js src/**/**/**/*.js src/**/**/**/**/*.js"
   },
   "proxy": "http://localhost:8000",
+  "engines": {
+    "node": ">=9.4.0"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters": [
+      "text"
+    ]
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

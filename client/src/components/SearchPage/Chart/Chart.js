@@ -1,92 +1,112 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import * as ListAction from '../../../store/actions';
-import Searchbox from '../../Search/Search';
-import SearchPageNavigator from '../SearchPageNavigator';
-import { sortArrayByfield } from '../../../utils';
+import userListMock from '../../../assets/userList';
 
-let CanvasJS = require('../../../assets/canvasjs.min');
-CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
+import CanvasJSReact from '../../../assets/canvasjs.react';
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export class Chart extends Component {
-    state = {
-      done: false
-    };
+  getChartOptions = () => {
+    const options = [];
 
-    renderColumnChart = () => {
-      const sortedList = this.props.userList.sort(sortArrayByfield('stars'));
-
-      const dataPoints = sortedList.map((item) => {
-        return {
-          label: item.name,
-          y: item.stars
+    Object.entries(userListMock).forEach(
+      ([key, list], index) => {
+        const dataPoints = list.map((item) => {
+          return {
+            x: new Date(item.date),
+            y: item.stars
+          };
+        });
+        options[index] = {
+          name: key,
+          dataPoints
         };
-      });
+      }
+    );
 
-      var chart = new CanvasJS.Chart('chartColumnContainer', {
-        title: {
-          text: 'Column chart'
-        },
-        data: [
-          {
-            type: 'column',
-            bevelEnabled: true,
-            indexLabelPlacement: 'inside',
-            dataPoints
-          }
-        ]
-      });
-      chart.render();
-    }
+    console.log(options);
 
-    handleGlobalSearch = value => {
-      this.props.searchUsers(value)
-        .then(() => this.setState({ done: true }))
-        /* eslint-disable no-console */
-        .catch(console.error);
-    }
+    return {
+      theme: 'light2',
+      animationEnabled: true,
+      title: {
+        text: 'Spline chart'
+      },
+      toolTip: {
+        shared: true
+      },
+      legend: {
+        cursor: 'pointer',
+        itemclick: this.toggleDataSeries
+      },
+      data: [{
+        type: 'spline',
+        name: options[0].name,
+        showInLegend: true,
+        xValueFormatString: 'MMM YYYY',
+        yValueFormatString: '#,##0',
+        dataPoints: options[0].dataPoints
+      },
+      {
+        type: 'spline',
+        name: options[1].name,
+        showInLegend: true,
+        xValueFormatString: 'MMM YYYY',
+        yValueFormatString: '#,##0',
+        dataPoints: options[1].dataPoints
+      },
+      {
+        type: 'spline',
+        name: options[2].name,
+        showInLegend: true,
+        xValueFormatString: 'MMM YYYY',
+        yValueFormatString: '#,##0',
+        dataPoints: options[2].dataPoints
+      },
+      {
+        type: 'spline',
+        name: options[3].name,
+        showInLegend: true,
+        xValueFormatString: 'MMM YYYY',
+        yValueFormatString: '#,##0',
+        dataPoints: options[3].dataPoints
+      },
+      {
+        type: 'spline',
+        name: options[4].name,
+        showInLegend: true,
+        xValueFormatString: 'MMM YYYY',
+        yValueFormatString: '#,##0',
+        dataPoints: options[4].dataPoints
+      }
+      ]
+    };
+  }
 
-    componentDidMount () {
-      this.renderColumnChart();
-    }
+  render () {
+    const chartOptions = this.getChartOptions();
 
-    componentDidUpdate () {
-      this.renderColumnChart();
-    }
-
-    render () {
-      return (
-          <div className="container" style={ { paddingTop: 48 } }>
-              <div className="row">
-                  <div className="col-md-10">
-                      <SearchPageNavigator />
-                      <Searchbox onChange={ this.handleGlobalSearch }/>
-                  </div>
-              </div>
-              <div className="row" style={ { paddingTop: 10 } }>
-                  <div id="chartColumnContainer"
-                    style={ { height: '300px', width: '100%' } }>
-                  </div>
-              </div>
-          </div>
-      );
-    }
+    return (
+        <div className="row" style={ { paddingTop: 10 } }
+          data-test="data-chart" >
+            <CanvasJSChart options = { chartOptions }
+              /* onRef = {ref => this.chart = ref} */
+            />
+        </div>
+    );
+  }
 }
 
 Chart.propTypes = {
   userList: PropTypes.arrayOf(
     PropTypes.object
-  ).isRequired,
-  searchUsers: PropTypes.func.isRequired
+  )// .isRequired // TODO: with real data change to required
 };
 
 Chart.defaultProps = {
-  userList: [],
-  /* eslint-disable no-console */
-  searchUsers: () => { console.error('function is not provided'); }
+  userList: []
 };
 
 const mapStateToProps = (state) => {
@@ -96,7 +116,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(ListAction, dispatch);
+  return {};
 };
 
 export default connect(

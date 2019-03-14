@@ -1,0 +1,18 @@
+.footer {
+    position: fixed;
+    height: 8%;
+    bottom: 0;
+    color: #fff;
+    background: #231f20;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-copyright {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-weight: 300;
+    font: 1.3rem "Source Sans Pro","Hiragino Sans GB","Microsoft JhengHei",arial,helvetica,sans-serif;
+    letter-spacing: .085rem;
+}
