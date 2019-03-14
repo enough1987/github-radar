@@ -9,7 +9,7 @@ import userListMock from '../../assets/userList';
 import CanvasJSReact from '../../assets/canvasjs.react';
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-const colors = ['#56e2a3', '#c5f722', '#3f587f', '#f76e4c', '#f7f44c' ];
+const colors = ['#56e2a3', '#c5f722', '#3f587f', '#f76e4c', '#f7f44c'];
 
 export class Chart extends Component {
   getChartOptions = () => {
@@ -31,6 +31,7 @@ export class Chart extends Component {
     );
 
     return {
+      // https://canvasjs.com/docs/charts/basics-of-creating-html5-chart/formatting-date-time/
       theme: 'light2',
       animationEnabled: true,
       title: {
