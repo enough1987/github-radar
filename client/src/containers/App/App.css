@@ -20,6 +20,7 @@
 
 .App {
   text-align: center;
+  font-family: "Source Sans Pro","Hiragino Sans GB","Microsoft JhengHei",arial,helvetica,sans-serif;
 }
 
 .App-logo {
@@ -162,7 +163,7 @@
 }
 
 .container {
-  padding-top: 60px;
+  /* padding-top: 60px; */
   max-width: 80%;
 
   width: 100%;
