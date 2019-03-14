@@ -12,12 +12,11 @@ export class SearchPage extends Component {
     super(props);
     this.state = {
       isSearching: false,
-      displayBanner: !(localStorage.getItem('displayBanner') === 'false')
+      displayBanner: true
     };
   }
 
     handleGlobalSearch = value => {
-      localStorage.setItem('displayBanner', 'false');
       this.setState({
         displayBanner: false
       });
