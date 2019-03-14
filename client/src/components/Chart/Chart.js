@@ -19,7 +19,7 @@ export class Chart extends Component {
       ([key, list], index) => {
         const dataPoints = list.map((item) => {
           return {
-            x: new Date(item.date),
+            label: item.date,
             y: item.total_count
           };
         });
@@ -59,6 +59,7 @@ export class Chart extends Component {
     };
   }
 
+  /* // TODO: remove
   getListOfNames = (chartOptions) => {
     return chartOptions.data.map((item, index) => {
       return <div key={ index } >
@@ -67,22 +68,17 @@ export class Chart extends Component {
       </div>;
     });
   }
+  */
 
   render () {
     const chartOptions = this.getChartOptions();
-    const listOfNames = this.getListOfNames(chartOptions);
 
     return (
         <div className="data-chart-container row" style={ { paddingTop: 45 } }
           data-test="data-chart" >
-            <div className="chart-left col-10" >
-                <CanvasJSChart options = { chartOptions }
-                /* onRef = {ref => this.chart = ref} */
-                />
-            </div>
-            <div className="chart-right col-2">
-                { listOfNames }
-            </div>
+            <CanvasJSChart options = { chartOptions }
+              /* onRef = {ref => this.chart = ref} */
+            />
         </div>
     );
   }
