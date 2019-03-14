@@ -1,0 +1,52 @@
+
+.contact-page-content {
+    position: relative;
+    top: 100px;
+    height: 100%;
+}
+.contact-page-content .title {
+    font: 300 3.4rem/4.3rem "museo-slab","source-han-sans-simplified-c","Source Sans Pro",arial,helvetica,sans-serif;
+    letter-spacing: .2rem;
+    margin: 5rem 0;
+}
+
+.contact-page-content .content {
+    min-height: 30rem;
+    text-align: center;
+}
+
+.contact-page-content .content .team-info {
+    text-transform: uppercase;
+    color: #c9db48;
+    font: 700 2.5rem/3.4rem "museo-sans","Source Sans Pro",arial,helvetica,sans-serif;
+    letter-spacing: .2rem;
+    margin-bottom: 1.7rem;
+}
+
+.contact-page-content .content .address-info {
+    color: #231f20;
+    font: 1.7rem/1.5 "Source Sans Pro","Hiragino Sans GB","Microsoft JhengHei",arial,helvetica,sans-serif;
+    letter-spacing: .085rem;
+    margin-bottom: 1.7rem;
+}
+
+.address-info__office-map {
+    display: block;
+    font-weight: 900;
+    font: 1.9rem/3.1rem "Source Sans Pro","Hiragino Sans GB","Microsoft JhengHei",arial,helvetica,sans-serif;
+    color: #76cdd8;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.address-info__office-map:hover {
+    text-decoration: none;
+    color: #166069;
+}
+
+.phone-info {
+    width: 100%;
+    vertical-align: top;
+    font: 1.9rem/3.1rem "Source Sans Pro","Hiragino Sans GB","Microsoft JhengHei",arial,helvetica,sans-serif;
+    padding: 0 1rem 6rem 0;
+}
