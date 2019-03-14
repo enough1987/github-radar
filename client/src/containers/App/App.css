@@ -164,7 +164,7 @@
 
 .container {
   /* padding-top: 60px; */
-  max-width: 80%;
+  max-width: 90%;
 
   width: 100%;
   position: relative;
@@ -180,4 +180,7 @@
 .search-page-content-full-view {
   padding-top: 60px;
   padding-bottom: 80px;
+}
+.table td, .table th {
+  padding: .6rem;
 }
