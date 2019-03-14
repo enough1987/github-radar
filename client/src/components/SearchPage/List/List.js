@@ -62,13 +62,18 @@ List.propTypes = {
   userList: PropTypes.arrayOf(
     PropTypes.object
   ).isRequired,
-  sortAction: PropTypes.func.isRequired
+  sortAction: PropTypes.func.isRequired,
+  /* eslint-disable react/no-unused-prop-types */
+  errors: PropTypes.object,
+  /* eslint-disable react/no-unused-prop-types */
+  loading: PropTypes.object
 };
 
 const mapStateToProps = (state) => {
   return {
-    userList: state.userList,
-    total: state.total
+    userList: state.searchPage.userList,
+    errors: state.common.errors,
+    loading: state.common.loading
   };
 };
 

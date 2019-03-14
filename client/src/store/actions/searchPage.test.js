@@ -2,7 +2,7 @@ import { sortAction } from './searchPage';
 import { storeFactory } from '../../utils/testUtils';
 
 describe('searchPage action ', () => {
-  const initialState = [];
+  const initialState = {};
   let store;
 
   beforeEach(() => {
@@ -14,17 +14,21 @@ describe('searchPage action ', () => {
 
   it('sortAction change state', async () => {
     store = storeFactory({
-      userList: [
-        { test: 'test2' }, { test: 'test1' }, { test: 'test3' }
-      ]
+      searchPage: {
+        userList: [
+          { test: 'test2' }, { test: 'test1' }, { test: 'test3' }
+        ]
+      }
     });
     await store.dispatch(sortAction('test', 'asc'));
 
-    const state = store.getState().userList;
+    const state = store.getState().searchPage;
 
     expect(state)
-      .toEqual([
-        { test: 'test1' }, { test: 'test2' }, { test: 'test3' }
-      ]);
+      .toEqual({
+        userList: [
+          { test: 'test1' }, { test: 'test2' }, { test: 'test3' }
+        ]
+      });
   });
 });

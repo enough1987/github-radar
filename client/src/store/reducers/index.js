@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux';
 
-import { userListReducer } from './searchPage';
+import { searchPageReducer } from './searchPage';
+import { trandsPageReducer } from './trandsPage';
+import { commonReducer } from './common';
 
 export default combineReducers({
-  userList: userListReducer
+  common: commonReducer,
+  searchPage: searchPageReducer,
+  trandsPage: trandsPageReducer
 });

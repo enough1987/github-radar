@@ -1,10 +1,12 @@
 /* eslint react/no-array-index-key: 0 */ // --> OFF
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 
 import './Chart.css';
 import userListMock from '../../assets/userList';
+import * as ListAction from '../../store/actions/trandsPage';
 
 import CanvasJSReact from '../../assets/canvasjs.react';
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -12,6 +14,12 @@ const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const colors = ['#56e2a3', '#c5f722', '#3f587f', '#f76e4c', '#f7f44c'];
 
 export class Chart extends Component {
+  constructor (props) {
+    super(props);
+
+    this.props.getTrands();
+  }
+
   getChartOptions = () => {
     const options = [];
 
@@ -74,6 +82,9 @@ export class Chart extends Component {
   render () {
     const chartOptions = this.getChartOptions();
 
+    /* eslint-disable no-console */
+    console.log(this.props.languageTrands, this.props);
+
     return (
         <div className="data-chart-container row" style={ { paddingTop: 45 } }
           data-test="data-chart" >
@@ -86,23 +97,26 @@ export class Chart extends Component {
 }
 
 Chart.propTypes = {
-  // userList: PropTypes.arrayOf(
-  //  PropTypes.object
-  // ).isRequired // TODO: with real data change to required
-};
-
-Chart.defaultProps = {
-  // userList: []
+  languageTrands: PropTypes.arrayOf(
+    PropTypes.object
+  ).isRequired,
+  getTrands: PropTypes.func.isRequired,
+  /* eslint-disable react/no-unused-prop-types */
+  errors: PropTypes.object,
+  /* eslint-disable react/no-unused-prop-types */
+  loading: PropTypes.object
 };
 
 const mapStateToProps = (state) => {
   return {
-    userList: state.userList
+    languageTrands: state.trandsPage.languageTrands,
+    errors: state.common.errors,
+    loading: state.common.loading
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return bindActionCreators(ListAction, dispatch);
 };
 
 export default connect(
