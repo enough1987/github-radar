@@ -3,7 +3,6 @@ import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import SearchPageNavigator from '../../components/SearchPage/SearchPageNavigator/SearchPageNavigator';
 import Searchbox from '../../components/Searchbox/Searchbox';
 import * as ListAction from '../../store/actions/searchPage';
 import Banner from '../../components/Banner/Banner';
@@ -32,7 +31,6 @@ export class SearchPage extends Component {
           <div className={ 'search-page-content' + (this.state.displayBanner ? '' : '-full-view') }
             data-test="search-page">
               { this.state.displayBanner ? <Banner/> : null }
-              { this.state.displayBanner ? null : <SearchPageNavigator/> }
               <div className={ 'row' + (this.state.displayBanner ? ' search-box' : '') }>
                   <div className="col-md-10">
                       <Searchbox onChange={ this.handleGlobalSearch } />
