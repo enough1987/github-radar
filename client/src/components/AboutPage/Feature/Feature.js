@@ -40,6 +40,15 @@ const Feature = () => (
                         <i className="fa fa-server"></i>
                     </div>
                     <div className="feature-item-desc">
+                        <h4>.NET Core solution</h4>
+                        <p>Something about .NET Core solution</p>
+                    </div>
+                </div>
+                <div className="feature-item">
+                    <div className="feature-item-icon">
+                        <i className="fa fa-server"></i>
+                    </div>
+                    <div className="feature-item-desc">
                         <h4>Microservices</h4>
                         <p>An architectural style that structures an application as a collection of services.</p>
                     </div>
@@ -51,15 +60,6 @@ const Feature = () => (
                     <div className="feature-item-desc">
                         <h4>Kafka</h4>
                         <p>A distributed streaming platform.</p>
-                    </div>
-                </div>
-                <div className="feature-item">
-                    <div className="feature-item-icon">
-                        <i className="fa fa-server"></i>
-                    </div>
-                    <div className="feature-item-desc">
-                        <h4>Spark</h4>
-                        <p>Something about Spark</p>
                     </div>
                 </div>
             </div>
