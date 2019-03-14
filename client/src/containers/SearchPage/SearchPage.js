@@ -8,13 +8,15 @@ import * as ListAction from '../../store/actions/searchPage';
 import Banner from '../../components/Banner/Banner';
 
 export class SearchPage extends Component {
-  state = {
-    isSearching: false,
-    displayBanner: !(localStorage.getItem('displayBanner') === 'false')
-  };
+  constructor (props) {
+    super(props);
+    this.state = {
+      isSearching: false,
+      displayBanner: true
+    };
+  }
 
     handleGlobalSearch = value => {
-      localStorage.setItem('displayBanner', 'false');
       this.setState({
         displayBanner: false
       });

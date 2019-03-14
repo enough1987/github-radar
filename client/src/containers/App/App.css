@@ -1,5 +1,26 @@
+@font-face {
+  font-family:'museo-slab';
+  src:url('../../assets/fonts/exljbris\ -\ MuseoSlab-100.otf');
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family:'museo-sans';
+  src:url('../../assets/fonts/exljbris\ -\ MuseoSans-100.otf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family:'Source Sans Pro';
+  src:url('../../assets/fonts/SourceSansPro-Regular.otf');
+  font-style: normal;
+}
+
+
 .App {
   text-align: center;
+  font-family: "Source Sans Pro","Hiragino Sans GB","Microsoft JhengHei",arial,helvetica,sans-serif;
 }
 
 .App-logo {
@@ -142,8 +163,8 @@
 }
 
 .container {
-  padding-top: 60px;
-  max-width: 80%;
+  /* padding-top: 60px; */
+  max-width: 90%;
 
   width: 100%;
   position: relative;
@@ -158,4 +179,8 @@
 
 .search-page-content-full-view {
   padding-top: 60px;
+  padding-bottom: 80px;
+}
+.table td, .table th {
+  padding: .6rem;
 }
