@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { storeFactory } from '../../../utils/testUtils';
+import { storeFactory } from '../../utils/testUtils';
 import { Chart } from './Chart';
 
 describe('Chart ', () => {

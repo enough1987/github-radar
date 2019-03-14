@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 
 import './Chart.css';
-import userListMock from '../../../assets/userList';
+import userListMock from '../../assets/userList';
 
-import CanvasJSReact from '../../../assets/canvasjs.react';
+import CanvasJSReact from '../../assets/canvasjs.react';
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const colors = [ '#3f587f', '#56e2a3', '#c5f722', '#f76e4c', '#f7f44c' ];
@@ -43,14 +43,16 @@ export class Chart extends Component {
         cursor: 'pointer',
         itemclick: this.toggleDataSeries
       },
+      axisX: {
+        valueFormatString: 'YYYY',
+        labelAngle: -50
+      },
       data: options.map((item, index) => {
         return {
           type: 'spline',
           name: item.name,
           color: colors[index],
           showInLegend: true,
-          xValueFormatString: 'MMM YYYY',
-          yValueFormatString: '#,##0',
           dataPoints: item.dataPoints
         };
       })
@@ -59,9 +61,9 @@ export class Chart extends Component {
 
   getListOfNames = (chartOptions) => {
     return chartOptions.data.map((item, index) => {
-      return <div key={ index }
-        style={ { color: colors[index] } }>
-          { '- ' + item.name }
+      return <div key={ index } >
+          <b style={ { color: colors[index] } } > - </b>
+          { item.name }
       </div>;
     });
   }
@@ -71,7 +73,7 @@ export class Chart extends Component {
     const listOfNames = this.getListOfNames(chartOptions);
 
     return (
-        <div className="row" style={ { paddingTop: 10 } }
+        <div className="data-chart-container row" style={ { paddingTop: 45 } }
           data-test="data-chart" >
             <div className="chart-left col-10" >
                 <CanvasJSChart options = { chartOptions }
