@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 import Chart from '../../components/Chart/Chart';
 
-export class TrandsPage extends Component {
+export class TrendsPage extends Component {
   render () {
     return (
-        <div className='trands-page-content'
-          data-test="trands-page">
+        <div className='trends-page-content'
+          data-test="trends-page">
 
             <Chart />
 
@@ -15,4 +15,4 @@ export class TrandsPage extends Component {
   }
 }
 
-export default TrandsPage;
+export default TrendsPage;

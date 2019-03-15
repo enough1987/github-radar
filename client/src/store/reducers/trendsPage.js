@@ -1,15 +1,15 @@
 import actionTypes from '../actions/actionTypes';
 
 const defaultState = {
-  languageTrands: []
+  languageTrends: []
 };
 
-export const trandsPageReducer = (state = defaultState, action) => {
+export const trendsPageReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case actionTypes.GET_TRANDS:
+    case actionTypes.GET_TRENDS:
       return {
         ...state,
-        languageTrands: action.languageTrands
+        languageTrends: action.payload
       };
     default:
       return state;
