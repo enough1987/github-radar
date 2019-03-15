@@ -9,7 +9,7 @@ const headers = {
 export const getTrands = keyword => dispatch => {
   dispatch(isLoadingAction(true, actionTypes.GET_TRANDS));
 
-  return fetch('http://ec2-54-222-208-228.cn-north-1.compute.amazonaws.com.cn:8000/api/github/trendlist', {
+  return fetch('/api/github/trendlist', {
     method: 'GET',
     mode: 'no-cors',
     headers
