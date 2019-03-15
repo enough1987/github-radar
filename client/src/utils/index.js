@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
 
+// TODO: it is not used
 export const loadingDefer = ms => {
   const promise = new Promise((resolve, reject) => {
     ms = ms || 2000; // default is 2 seconds
@@ -28,6 +29,7 @@ export const areEqualShallow = (a, b) => {
   return true;
 };
 
+// TODO: it is not used
 export const Loading = loadingProp => WrappedComponent => {
   return class Loading extends Component {
     render () {
