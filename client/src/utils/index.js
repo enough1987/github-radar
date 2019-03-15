@@ -45,3 +45,7 @@ export const sortArrayByfield = (field) => (a, b) => {
   if (a[field] > b[field]) { return 1; }
   return 0;
 };
+
+export const searchFields = (state, field, keyword) => {
+  return state.filter(ul => ul[field] && ul[field].toLowerCase().indexOf(keyword) !== -1);
+};

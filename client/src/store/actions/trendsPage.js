@@ -6,7 +6,7 @@ const headers = {
   'Accept': 'application/json'
 };
 
-export const getTrends = keyword => dispatch => {
+export const getTrends = () => dispatch => {
   dispatch(isLoadingAction(true, actionTypes.GET_TRENDS));
 
   return fetch('/api/github/trendlist', {

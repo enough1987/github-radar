@@ -1,5 +1,4 @@
 import orderBy from 'lodash/orderBy';
-
 import actionTypes from '../actions/actionTypes';
 
 const defaultState = {
@@ -38,8 +37,4 @@ export const searchPageReducer = (state = defaultState, action) => {
     default:
       return state;
   }
-};
-
-export const searchFields = (state, field, keyword) => {
-  return state.filter(ul => ul[field] && ul[field].toLowerCase().indexOf(keyword) !== -1);
 };

@@ -46,5 +46,14 @@ describe('searchPage reducer ', () => {
         'created': 'test',
         'updated': 'test'
       }]);
+
+    const resultWithoutArray = searchPageReducer({ userList: [] }, { type: actionTypes.SEARCH_USERS,
+      payload: {
+        items: 'test'
+      }
+    }).userList;
+
+    expect(resultWithoutArray)
+      .toEqual([]);
   });
 });
