@@ -180,6 +180,7 @@
 .search-page-content-full-view {
   padding-top: 60px;
   padding-bottom: 80px;
+  min-height: 100vh;
 }
 .table td, .table th {
   padding: .6rem;
