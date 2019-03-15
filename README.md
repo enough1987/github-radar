@@ -28,7 +28,8 @@ Production version will be deployed to cloud service, with https, cloud storage,
 
 > http://ec2-54-222-208-228.cn-north-1.compute.amazonaws.com.cn/
 > https://dry-cliffs-21510.herokuapp.com/
-> http://ec2-54-222-208-228.cn-north-1.compute.amazonaws.com.cn:5500/index.html
+> http://ec2-54-222-208-228.cn-north-1.compute.amazonaws.com.cn:8000/index.html
+> https://www.draw.io/#Wb!CMbqu5WvZ06rehPmNe7Y5JVao62F1YpKjzltkha3mI_lEQZq6mtRS7XhXvg24Hb5%2F01COIJT6SMMGXATI7ONRAIMS2NYJMV2ZW2
 
 # TODO
 
