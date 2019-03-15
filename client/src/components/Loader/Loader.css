@@ -1,0 +1,81 @@
+
+.epui-loading-mask {
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 9990;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  svg {
+    margin: 25vh 1vw 45vh 4vw;
+    right: 22vw;
+    position: absolute;
+    top: 35px;
+    animation-name: mymove;
+    animation-duration: 2333ms;
+    animation-iteration-count: infinite;
+    width: 40vw;
+    height: 20vh;
+    z-index: 9999;
+    opacity: 2;
+  }
+  @keyframes mymove
+  {
+    0%   {top:35px;}
+    14.27%  {top:0px;}
+    28.55%  {top:35px;}
+    100%  {top:35px;}
+  }
+  
+  @-webkit-keyframes mymove /*Safari and Chrome*/
+  {
+    0%   {top:35px;}
+    16.65%  {top:0px;}
+    33.3%  {top:35px;}
+    100%  {top:35px;}
+  }
+  
+  #leftarrow {
+    animation-delay: 1666ms;
+    -webkit-animation-delay: 1666ms;
+  }
+  #e {
+    animation-delay: 1333ms;
+    -webkit-animation-delay: 1333ms;
+  }
+  #p {
+    animation-delay: 999ms;
+    -webkit-animation-delay: 999ms;
+  }
+  #a {
+    animation-delay: 666ms;
+    -webkit-animation-delay: 666ms;
+  }
+  #m {
+    animation-delay: 333ms;
+    -webkit-animation-delay: 333ms;
+  }
+  #rightarrow {
+    animation-delay: 0ms;
+    -webkit-animation-delay: 0ms;
+  }
+  
+  /** {
+    margin: 0;
+  }*/
+  
+  .full-screen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+  }
+  .central-content {
+    background-color:#2A2A2C;
+    opacity: 0.5;
+    z-index: 1;
+  }
