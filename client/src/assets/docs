@@ -1,0 +1,3 @@
+swagger: http://ec2-54-222-208-228.cn-north-1.compute.amazonaws.com.cn:8000/index.html
+
+website: http://ec2-54-222-208-228.cn-north-1.compute.amazonaws.com.cn/search/list
