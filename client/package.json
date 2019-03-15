@@ -53,6 +53,15 @@
     },
     "coverageReporters": [
       "text"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "src/**/**/*.js",
+      "src/**/**/**/*.js",
+      "src/**/**/**/**/*.js",
+      "!src/assets/*",
+      "!src/index.js",
+      "!src/serviceWorker.js"
     ]
   },
   "eslintConfig": {
