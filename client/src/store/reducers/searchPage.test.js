@@ -1,11 +1,12 @@
 import { searchPageReducer } from './searchPage';
+import actionTypes from '../actions/actionTypes';
 
 describe('searchPage reducer ', () => {
   it('SORT_USERS should sort', () => {
     const result = searchPageReducer({
       userList: [{ test: 'test3' }, { test: 'test1' }, { test: 'test2' }]
     },
-    { type: 'SORT_USERS', sortBy: 'test', seq: 'asc' }
+    { type: actionTypes.SORT_USERS, sortBy: 'test', seq: 'asc' }
     ).userList;
 
     expect(result)
@@ -17,7 +18,7 @@ describe('searchPage reducer ', () => {
   });
 
   it('SEARCH_USERS should return items', () => {
-    const result = searchPageReducer({ userList: [] }, { type: 'SEARCH_USERS',
+    const result = searchPageReducer({ userList: [] }, { type: actionTypes.SEARCH_USERS,
       payload: {
         items: [{
           'name': 'test',
@@ -45,5 +46,14 @@ describe('searchPage reducer ', () => {
         'created': 'test',
         'updated': 'test'
       }]);
+
+    const resultWithoutArray = searchPageReducer({ userList: [] }, { type: actionTypes.SEARCH_USERS,
+      payload: {
+        items: 'test'
+      }
+    }).userList;
+
+    expect(resultWithoutArray)
+      .toEqual([]);
   });
 });

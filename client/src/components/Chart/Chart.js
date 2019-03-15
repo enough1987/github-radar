@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 
 import './Chart.css';
-import userListMock from '../../assets/userList';
-import * as ListAction from '../../store/actions/trandsPage';
+import * as ListAction from '../../store/actions/trendsPage';
 
 import CanvasJSReact from '../../assets/canvasjs.react';
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -17,13 +16,13 @@ export class Chart extends Component {
   constructor (props) {
     super(props);
 
-    this.props.getTrands();
+    this.props.getTrends();
   }
 
   getChartOptions = () => {
     const options = [];
 
-    userListMock.forEach(
+    this.props.languageTrends.forEach(
       (lang, index) => {
         const dataPoints = lang.results.map((item) => {
           return {
@@ -43,7 +42,7 @@ export class Chart extends Component {
       theme: 'light2',
       animationEnabled: true,
       title: {
-        text: 'Language trands'
+        text: 'Language trends'
       },
       toolTip: {
         shared: true
@@ -71,9 +70,6 @@ export class Chart extends Component {
   render () {
     const chartOptions = this.getChartOptions();
 
-    /* eslint-disable no-console */
-    console.log(this.props.languageTrands, this.props);
-
     return (
         <div className="data-chart-container row" style={ { paddingTop: 45 } }
           data-test="data-chart" >
@@ -86,10 +82,10 @@ export class Chart extends Component {
 }
 
 Chart.propTypes = {
-  languageTrands: PropTypes.arrayOf(
+  languageTrends: PropTypes.arrayOf(
     PropTypes.object
   ).isRequired,
-  getTrands: PropTypes.func.isRequired,
+  getTrends: PropTypes.func.isRequired,
   /* eslint-disable react/no-unused-prop-types */
   errors: PropTypes.object,
   /* eslint-disable react/no-unused-prop-types */
@@ -98,7 +94,7 @@ Chart.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    languageTrands: state.trandsPage.languageTrands,
+    languageTrends: state.trendsPage.languageTrends,
     errors: state.common.errors,
     loading: state.common.loading
   };

@@ -4,8 +4,8 @@ const commonActionTypes = {
   IS_LOADING: 'IS_LOADING'
 };
 
-const trandsPageActionTypes = {
-  GET_TRANDS: 'GET_TRANDS'
+const trendsPageActionTypes = {
+  GET_TRENDS: 'GET_TRENDS'
 };
 
 const searchPageActionTypes = {
@@ -15,6 +15,6 @@ const searchPageActionTypes = {
 
 export default {
   ...commonActionTypes,
-  ...trandsPageActionTypes,
+  ...trendsPageActionTypes,
   ...searchPageActionTypes
 };

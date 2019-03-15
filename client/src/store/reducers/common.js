@@ -12,7 +12,7 @@ export const commonReducer = (state = defaultState, action) => {
         ...state,
         errors: {
           ...state.errors,
-          errorType: action.error
+          [action.errorType]: action.error
         }
       };
     case actionTypes.IS_LOADING:

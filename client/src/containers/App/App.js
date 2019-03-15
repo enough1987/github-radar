@@ -6,7 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import List from '../../components/SearchPage/List/List';
 import SearchPage from '../SearchPage/SearchPage';
 import AboutPage from '../AboutPage/AboutPage';
-import TrandsPage from '../TrandsPage/TrandsPage';
+import TrendsPage from '../TrendsPage/TrendsPage';
 import ContactPage from '../ContactPage/ContactPage';
 import './App.css';
 
@@ -21,7 +21,7 @@ const UserLoginRouters = () => (
             </SearchPage>
         }/>
         <Route path="/about" component={ AboutPage }/>
-        <Route path='/trands/language' component={ TrandsPage }/>
+        <Route path='/trends/language' component={ TrendsPage }/>
         <Route path="/contact" component={ ContactPage }/>
         <Route render={ () => <Redirect to="/search/list"/> }/>
     </Switch>
