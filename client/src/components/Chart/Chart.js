@@ -23,16 +23,16 @@ export class Chart extends Component {
   getChartOptions = () => {
     const options = [];
 
-    Object.entries(userListMock).forEach(
-      ([key, list], index) => {
-        const dataPoints = list.map((item) => {
+    userListMock.forEach(
+      (lang, index) => {
+        const dataPoints = lang.results.map((item) => {
           return {
             label: item.date,
-            y: item.total_count
+            y: item.total_Count
           };
         });
         options[index] = {
-          name: key,
+          name: lang.language,
           dataPoints
         };
       }
@@ -67,17 +67,6 @@ export class Chart extends Component {
       })
     };
   }
-
-  /* // TODO: remove
-  getListOfNames = (chartOptions) => {
-    return chartOptions.data.map((item, index) => {
-      return <div key={ index } >
-          <b style={ { color: colors[index] } } > - </b>
-          { item.name }
-      </div>;
-    });
-  }
-  */
 
   render () {
     const chartOptions = this.getChartOptions();

@@ -11,6 +11,7 @@ export const getTrands = keyword => dispatch => {
 
   return fetch('http://ec2-54-222-208-228.cn-north-1.compute.amazonaws.com.cn:8000/api/github/trendlist', {
     method: 'GET',
+    mode: 'no-cors',
     headers
   })
     .then(res => res.json())

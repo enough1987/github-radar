@@ -6,7 +6,7 @@ const defaultState = {
 
 export const trandsPageReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case actionTypes.GET_LANGUAGE_TRANDS:
+    case actionTypes.GET_TRANDS:
       return {
         ...state,
         languageTrands: action.languageTrands

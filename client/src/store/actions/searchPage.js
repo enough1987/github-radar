@@ -11,6 +11,7 @@ export const searchUsers = keyword => dispatch => {
 
   return fetch(`/api/github/search/${keyword}`, {
     method: 'GET',
+    mode: 'no-cors',
     headers
   })
     .then(res => res.json())
